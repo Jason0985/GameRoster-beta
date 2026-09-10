@@ -12,7 +12,7 @@
   "apple-mobile-web-app-status-bar-style": "default",
   "icons": [
     {
-      "src": "assets/icons/app_icon.jpg",
+      "src": "assets/icons/app-beta-icon.jpg",
       "sizes": "2048x2048",
       "type": "image/jpeg",
       "purpose": "any"
