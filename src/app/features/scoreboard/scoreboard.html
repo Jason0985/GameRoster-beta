@@ -1,0 +1,69 @@
+<div class="scoreboard-root">
+  <section class="hero">
+    <div class="badge">V1.01</div>
+    <h1 class="title">Board Game <span class="accent">Scoreboard</span></h1>
+    <p class="subtitle">Track every round, keep the table moving.</p>
+  </section>
+
+  <mat-card *ngIf="!gameStarted" class="add-card">
+    <mat-card-content class="add-content">
+      <div class="add-heading">
+        <div class="add-icon"><mat-icon>person_add</mat-icon></div>
+        <div>
+          <div class="add-title">Spieler hinzufügen</div>
+          <div class="add-hint">Wer sitzt heute mit am Tisch?</div>
+        </div>
+      </div>
+      <div class="top">
+        <mat-form-field appearance="outline" class="name-field">
+          <mat-label>Name eingeben</mat-label>
+          <input matInput [(ngModel)]="name" (keyup.enter)="add()" />
+        </mat-form-field>
+        <button mat-flat-button color="primary" class="add-button" (click)="add()">
+          <mat-icon>add</mat-icon>
+          Spieler hinzufügen
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="list">
+    <mat-card *ngFor="let p of players$ | async; let rank = index; trackBy: trackById" class="player-card">
+      <div class="mat-card-wrapper">
+        <div class="info">
+          <div class="player-heading">
+            <span class="rank-badge">{{ rank + 1 }}</span>
+            <div class="name">{{ p.name }}</div>
+          </div>
+          <div class="score">
+            <span>{{ p.score }}</span> points
+          </div>
+        </div>
+        <mat-form-field *ngIf="gameStarted" appearance="outline" class="score-field" subscriptSizing="dynamic">
+          <mat-label>Score</mat-label>
+          <input matInput type="number" min="0" [ngModel]="roundScores[p.id]"
+            (ngModelChange)="setRoundScore(p.id, $event)" aria-label="Points for this round" />
+        </mat-form-field>
+        <button *ngIf="!gameStarted" mat-mini-fab color="warn" class="remove-player-button" type="button"
+          title="Spieler entfernen" [attr.aria-label]="p.name + ' entfernen'" (click)="removePlayer(p.id)">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="footer">
+    <button *ngIf="!gameStarted" mat-flat-button color="primary" (click)="startGame()">
+      <mat-icon>play_arrow</mat-icon>
+      Spiel starten
+    </button>
+    <button *ngIf="gameStarted" mat-stroked-button color="accent" (click)="nextRound()">
+      <mat-icon>arrow_forward</mat-icon>
+      In die nächste Runde
+    </button>
+    <button *ngIf="hasCompletedRound" mat-flat-button color="primary" (click)="endGame()">
+      <mat-icon>flag</mat-icon>
+      Spiel beenden
+    </button>
+  </div>
+</div>
