@@ -1,0 +1,17 @@
+<div class="app-shell">
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Hauptnavigation">
+    <a class="bottom-nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+      aria-label="Home">
+      <mat-icon aria-hidden="true">home</mat-icon>
+      <span>Home</span>
+    </a>
+    <a class="bottom-nav-link" routerLink="/ranking" routerLinkActive="active" aria-label="Ranking">
+      <mat-icon aria-hidden="true">leaderboard</mat-icon>
+      <span>Ranking</span>
+    </a>
+  </nav>
+</div>

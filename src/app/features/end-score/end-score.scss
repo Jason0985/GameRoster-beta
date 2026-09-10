@@ -1,0 +1,122 @@
+.end-score-root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: min(100%, 680px);
+  min-height: calc(100dvh - 88px);
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 17px 16px 56px;
+  color: #fff;
+}
+
+.end-header {
+  padding: 10px 0 18px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 7px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.end-header h1 {
+  margin: 18px 0 10px;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 700;
+  line-height: 0.98;
+}
+
+.end-header p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 15px;
+}
+
+.ranking-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 92px;
+  box-sizing: border-box;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 45px rgba(13, 5, 19, 0.22);
+  backdrop-filter: blur(16px) saturate(125%);
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.rank-badge {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(255, 107, 129, 0.9), rgba(124, 77, 255, 0.9));
+  color: #fff;
+  font-size: 22px;
+  font-weight: 800;
+  box-shadow: 0 7px 16px rgba(124, 77, 255, 0.25);
+}
+
+.player-name {
+  min-width: 0;
+  overflow: hidden;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.player-score {
+  margin-left: auto;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.player-score span {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.new-game-button {
+  align-self: center;
+  min-height: 48px;
+  margin-top: 10px;
+  padding: 0 22px;
+  border-radius: 999px;
+}
+
+@media (min-width: 600px) {
+  .end-score-root {
+    padding: 64px 24px 72px;
+  }
+}
+
+@media (max-width: 420px) {
+  .ranking-card {
+    padding: 14px;
+  }
+}
