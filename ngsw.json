@@ -1,7 +1,7 @@
 {
   "configVersion": 1,
-  "timestamp": 1789048839429,
-  "index": "/boardGameRanking/index.html",
+  "timestamp": 1789049031139,
+  "index": "/GameRoster-beta/index.html",
   "assetGroups": [
     {
       "name": "app",
@@ -11,15 +11,15 @@
         "ignoreVary": true
       },
       "urls": [
-        "/boardGameRanking/chunk-BL838Vfo.js",
-        "/boardGameRanking/chunk-BulD7CSl.js",
-        "/boardGameRanking/chunk-a6ysnbNy.js",
-        "/boardGameRanking/chunk-i_umyl-r.js",
-        "/boardGameRanking/favicon.ico",
-        "/boardGameRanking/index.html",
-        "/boardGameRanking/main-FGVVPNZS.js",
-        "/boardGameRanking/manifest.webmanifest",
-        "/boardGameRanking/styles-23MEY5AH.css"
+        "/GameRoster-beta/chunk-BL838Vfo.js",
+        "/GameRoster-beta/chunk-BulD7CSl.js",
+        "/GameRoster-beta/chunk-a6ysnbNy.js",
+        "/GameRoster-beta/chunk-i_umyl-r.js",
+        "/GameRoster-beta/favicon.ico",
+        "/GameRoster-beta/index.html",
+        "/GameRoster-beta/main-FGVVPNZS.js",
+        "/GameRoster-beta/manifest.webmanifest",
+        "/GameRoster-beta/styles-23MEY5AH.css"
       ],
       "patterns": []
     },
@@ -31,27 +31,27 @@
         "ignoreVary": true
       },
       "urls": [
-        "/boardGameRanking/assets/icons/app-beta-icon.jpg",
-        "/boardGameRanking/assets/icons/app_icon.jpg",
-        "/boardGameRanking/podium_icon.png"
+        "/GameRoster-beta/assets/icons/app-beta-icon.jpg",
+        "/GameRoster-beta/assets/icons/app_icon.jpg",
+        "/GameRoster-beta/podium_icon.png"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "/boardGameRanking/assets/icons/app-beta-icon.jpg": "59bb6b7c87c1abd4460587f48c3584768d1d79c8",
-    "/boardGameRanking/assets/icons/app_icon.jpg": "4bde37064230483c929f49dd70b7201e66f27457",
-    "/boardGameRanking/chunk-BL838Vfo.js": "86384251b4c016d4420f40aa5787abca846403c4",
-    "/boardGameRanking/chunk-BulD7CSl.js": "c2ff6b848ed97d6bf75b1656552316f41e1e850d",
-    "/boardGameRanking/chunk-a6ysnbNy.js": "23342f6004b1961bdfba39c5b66c163501735776",
-    "/boardGameRanking/chunk-i_umyl-r.js": "2450b5ed363e6cc7b46b078c122c548d2eee95bb",
-    "/boardGameRanking/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
-    "/boardGameRanking/index.html": "b38c320c0439adc40eaf153c59305267d4f27c85",
-    "/boardGameRanking/main-FGVVPNZS.js": "26393e7d6f0b61179f8865b313f31db96824ea31",
-    "/boardGameRanking/manifest.webmanifest": "cdf09adae3aeb7d9e8029320ebb099fa1a3423a2",
-    "/boardGameRanking/podium_icon.png": "ad01c9ac9286738f88e733ee1a95fc2afb448459",
-    "/boardGameRanking/styles-23MEY5AH.css": "d1a90b503b34420e6bb697837c9e163fa9e94afe"
+    "/GameRoster-beta/assets/icons/app-beta-icon.jpg": "59bb6b7c87c1abd4460587f48c3584768d1d79c8",
+    "/GameRoster-beta/assets/icons/app_icon.jpg": "4bde37064230483c929f49dd70b7201e66f27457",
+    "/GameRoster-beta/chunk-BL838Vfo.js": "86384251b4c016d4420f40aa5787abca846403c4",
+    "/GameRoster-beta/chunk-BulD7CSl.js": "c2ff6b848ed97d6bf75b1656552316f41e1e850d",
+    "/GameRoster-beta/chunk-a6ysnbNy.js": "23342f6004b1961bdfba39c5b66c163501735776",
+    "/GameRoster-beta/chunk-i_umyl-r.js": "2450b5ed363e6cc7b46b078c122c548d2eee95bb",
+    "/GameRoster-beta/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "/GameRoster-beta/index.html": "9d39e91d4e4b489229cd0c148c2ea74eaa58fccd",
+    "/GameRoster-beta/main-FGVVPNZS.js": "26393e7d6f0b61179f8865b313f31db96824ea31",
+    "/GameRoster-beta/manifest.webmanifest": "864dc8887a694cb012fb23381b1e98862518c93b",
+    "/GameRoster-beta/podium_icon.png": "ad01c9ac9286738f88e733ee1a95fc2afb448459",
+    "/GameRoster-beta/styles-23MEY5AH.css": "d1a90b503b34420e6bb697837c9e163fa9e94afe"
   },
   "navigationUrls": [
     {
