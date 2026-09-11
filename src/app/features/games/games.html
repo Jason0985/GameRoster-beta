@@ -1,0 +1,37 @@
+<div class="apps-root">
+    <header class="ui-hero apps-header">
+        <div class="apps-heading">
+            <div>
+                <h1 class="ui-title">Meine <span class="ui-accent">Spiele</span></h1>
+                <p class="ui-subtitle">Deine Sammlung für den nächsten Spieleabend.</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="apps-content">
+        <label class="apps-search ui-surface">
+            <input type="search" placeholder="Spiele durchsuchen" [value]="searchTerm()" (input)="updateSearch($event)"
+                aria-label="Spiele durchsuchen" />
+            <mat-icon aria-hidden="true">search</mat-icon>
+        </label>
+
+        <section class="game-list" aria-label="Meine Spiele">
+            @for (gameApp of filteredApps(); track gameApp.title) {
+            <article class="game-card ui-surface">
+                <div class="game-icon" aria-hidden="true"><mat-icon>{{ gameApp.icon }}</mat-icon></div>
+                <div class="game-details">
+                    <p class="game-category">{{ gameApp.category }}</p>
+                    <h2>{{ gameApp.title }}</h2>
+                    <p class="game-description">{{ gameApp.description }}</p>
+                </div>
+                <mat-icon class="game-arrow" aria-hidden="true">chevron_right</mat-icon>
+            </article>
+            } @empty {
+            <div class="empty-state ui-surface">
+                <mat-icon aria-hidden="true">search_off</mat-icon>
+                <p>Keine Spiele gefunden.</p>
+            </div>
+            }
+        </section>
+    </div>
+</div>

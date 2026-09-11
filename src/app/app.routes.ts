@@ -30,6 +30,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'apps',
+    loadComponent: () =>
+      import('./features/games/games').then(
+        (module) => module.Apps
+      ),
+  },
+  {
     path: 'profile',
     loadComponent: () =>
       import('./features/profile/profile').then(

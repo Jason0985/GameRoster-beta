@@ -1,7 +1,7 @@
 <div class="end-score-root">
   <header class="end-header">
-    <div class="ui-badge"> Rundenanzahl {{ ((roundCount$ | async) ?? 0)}}</div>
-    <h1>Endpunktestand</h1>
+    <h1 class="ui-title">End<span class="ui-accent">punktestand</span></h1>
+    <div class="ui-badge">Rundenanzahl {{ ((roundCount$ | async) ?? 0) }}</div>
   </header>
 
   <mat-card *ngFor="let player of players$ | async; let rank = index; trackBy: trackById"

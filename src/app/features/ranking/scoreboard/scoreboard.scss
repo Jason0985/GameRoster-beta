@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 28px 16px 36px;
+  padding: 0 16px 36px;
   position: relative;
   width: 100%;
   min-height: calc(100dvh - 88px);
@@ -15,6 +15,14 @@
   margin-bottom: 17px;
 }
 
+.scoreboard-root .ui-title {
+  margin-top: 18px;
+}
+
+.scoreboard-root .hero .ui-badge {
+  margin-top: 0;
+}
+
 .scoreboard-root .player-card {
   width: min(100%, 680px);
   box-sizing: border-box;
@@ -24,8 +32,8 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 18px;
+  gap: 10px;
+  margin-top: 14px;
 }
 
 .player-card {
@@ -33,9 +41,9 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  min-height: 92px;
-  padding: 16px 18px;
-  gap: 16px;
+  min-height: 78px;
+  padding: 12px 14px;
+  gap: 12px;
 }
 
 .mat-card-wrapper {
@@ -55,8 +63,8 @@
 .player-heading {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
+  gap: 8px;
+  margin-bottom: 7px;
 }
 
 .rank-badge {
@@ -76,7 +84,7 @@
 
 .name {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -89,17 +97,17 @@
 
 .score span {
   color: var(--color-text);
-  font-size: 24px;
+  font-size: 21px;
   font-weight: 700;
   line-height: 1;
 }
 
 .score-field {
-  width: 112px;
+  width: 100px;
 }
 
 .footer {
-  margin-top: 26px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,17 +117,17 @@
 
 @media (min-width: 600px) {
   .scoreboard-root {
-    padding: 48px 24px 56px;
+    padding: 0 24px 56px;
   }
 }
 
 @media (max-width: 420px) {
   .player-card {
-    padding: 14px;
+    padding: 12px;
   }
 
   .score-field {
-    width: 96px;
-    flex-basis: 96px;
+    width: 90px;
+    flex-basis: 90px;
   }
 }
