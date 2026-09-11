@@ -1,0 +1,22 @@
+<div class="end-score-root">
+  <header class="end-header">
+    <h1 class="ui-title">End<span class="ui-accent">punktestand</span></h1>
+    <div class="ui-badge">Rundenanzahl {{ ((roundCount$ | async) ?? 0) }}</div>
+  </header>
+
+  <mat-card *ngFor="let player of players$ | async; let rank = index; trackBy: trackById"
+    class="ranking-card ui-surface">
+    <div class="player-info">
+      <div class="rank-badge">{{ rank + 1 }}</div>
+      <div class="player-name">{{ player.name }}</div>
+    </div>
+    <div class="score">
+      <div class="player-score">{{ player.score }} <span>Pkt.</span></div>
+    </div>
+  </mat-card>
+
+  <button mat-flat-button color="warn" class="new-game-button" (click)="startNewGame()">
+    <mat-icon>replay</mat-icon>
+    Neues Spiel starten
+  </button>
+</div>

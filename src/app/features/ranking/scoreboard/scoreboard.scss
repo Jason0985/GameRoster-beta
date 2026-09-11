@@ -1,0 +1,133 @@
+.scoreboard-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 16px 36px;
+  position: relative;
+  width: 100%;
+  min-height: calc(100dvh - 88px);
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.hero {
+  margin-bottom: 17px;
+}
+
+.scoreboard-root .ui-title {
+  margin-top: 18px;
+}
+
+.scoreboard-root .hero .ui-badge {
+  margin-top: 0;
+}
+
+.scoreboard-root .player-card {
+  width: min(100%, 680px);
+  box-sizing: border-box;
+}
+
+.list {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.player-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 78px;
+  padding: 12px 14px;
+  gap: 12px;
+}
+
+.mat-card-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.player-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+
+.rank-badge {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: linear-gradient(145deg, rgba(255, 107, 129, 0.9), rgba(124, 77, 255, 0.9));
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 0 7px 16px rgba(124, 77, 255, 0.25);
+}
+
+.name {
+  font-weight: 600;
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.score {
+  color: var(--color-text-subtle);
+  font-size: 13px;
+}
+
+.score span {
+  color: var(--color-text);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.score-field {
+  width: 100px;
+}
+
+.footer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+@media (min-width: 600px) {
+  .scoreboard-root {
+    padding: 0 24px 56px;
+  }
+}
+
+@media (max-width: 420px) {
+  .player-card {
+    padding: 12px;
+  }
+
+  .score-field {
+    width: 90px;
+    flex-basis: 90px;
+  }
+}

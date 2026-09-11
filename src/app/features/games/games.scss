@@ -1,0 +1,127 @@
+.apps-root {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: calc(100dvh - 88px);
+	box-sizing: border-box;
+	padding: 0 16px 36px;
+	color: var(--color-text);
+}
+
+.apps-header,
+.apps-content {
+	width: min(100%, var(--content-width));
+	box-sizing: border-box;
+}
+
+.apps-header {
+	margin-bottom: 24px;
+	text-align: center;
+}
+
+.apps-heading {
+	width: 100%;
+}
+
+.apps-heading > div {
+	width: 100%;
+}
+
+.apps-search {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	min-height: 46px;
+	margin-bottom: 16px;
+	padding: 0 14px;
+}
+
+.apps-search input {
+	min-width: 0;
+	flex: 1;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	color: var(--color-text);
+	font: inherit;
+	font-size: 14px;
+}
+
+.apps-search input::placeholder { color: var(--color-text-subtle); }
+.apps-search mat-icon { color: var(--color-primary-light); }
+
+.game-list { display: flex; flex-direction: column; gap: 10px; }
+
+.game-card {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	width: 100%;
+	min-height: 76px;
+	box-sizing: border-box;
+	padding: 12px 14px;
+}
+
+.game-icon {
+	display: grid;
+	flex: 0 0 auto;
+	place-items: center;
+	width: 42px;
+	height: 42px;
+	border-radius: var(--radius-small);
+	background: var(--color-primary-soft);
+	color: var(--color-primary-light);
+}
+
+.game-icon mat-icon { width: 22px; height: 22px; font-size: 22px; }
+.game-details { min-width: 0; flex: 1; }
+
+.game-category {
+	margin: 0 0 2px;
+	color: var(--color-primary-light);
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.game-details h2 {
+	overflow: hidden;
+	margin: 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 16px;
+}
+
+.game-description {
+	overflow: hidden;
+	margin: 3px 0 0;
+	color: var(--color-text-muted);
+	font-size: 12px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.game-arrow {
+	flex: 0 0 auto;
+	margin-left: auto;
+	color: var(--color-text-subtle);
+}
+
+.empty-state {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	min-height: 90px;
+	color: var(--color-text-muted);
+}
+
+.empty-state mat-icon { color: var(--color-primary-light); }
+.empty-state p { margin: 0; }
+
+@media (min-width: 600px) {
+	.apps-root { padding: 0 24px 56px; }
+}

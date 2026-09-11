@@ -1,5 +1,42 @@
 <div class="app-shell">
+  <header class="top-bar">
+    <span class="top-bar-title">
+      <img src="gameRooster-icon.png" alt="" aria-hidden="true">
+      GameRoster
+    </span>
+
+    <div class="header-actions">
+      <button mat-icon-button class="header-icon-button notification-button" aria-label="Benachrichtigungen">
+        <mat-icon aria-hidden="true">notifications</mat-icon>
+        <span class="notification-dot"></span>
+      </button>
+      <button mat-icon-button class="header-icon-button" aria-label="Einstellungen">
+        <mat-icon aria-hidden="true">settings</mat-icon>
+      </button>
+    </div>
+  </header>
+
   <main>
     <router-outlet></router-outlet>
   </main>
+
+  <nav class="bottom-nav" aria-label="Hauptnavigation">
+    <a class="bottom-nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+      aria-label="Home">
+      <mat-icon aria-hidden="true">home</mat-icon>
+      <span>Home</span>
+    </a>
+    <a class="bottom-nav-link" routerLink="/ranking" routerLinkActive="active" aria-label="Ranking">
+      <mat-icon aria-hidden="true">leaderboard</mat-icon>
+      <span>Ranking</span>
+    </a>
+    <a class="bottom-nav-link" routerLink="/apps" routerLinkActive="active" aria-label="Apps">
+      <mat-icon aria-hidden="true">apps</mat-icon>
+      <span>Apps</span>
+    </a>
+    <a class="bottom-nav-link" routerLink="/profile" routerLinkActive="active" aria-label="Profil">
+      <mat-icon aria-hidden="true">person</mat-icon>
+      <span>Profil</span>
+    </a>
+  </nav>
 </div>
