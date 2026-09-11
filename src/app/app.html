@@ -1,4 +1,16 @@
 <div class="app-shell">
+  <header class="top-bar">
+    <span class="top-bar-title">
+      <img src="/gameRooster-icon.png" alt="" aria-hidden="true">
+      GameRoster
+    </span>
+
+    <button mat-icon-button class="notification-button" aria-label="Benachrichtigungen">
+      <mat-icon aria-hidden="true">notifications</mat-icon>
+      <span class="notification-dot"></span>
+    </button>
+  </header>
+
   <main>
     <router-outlet></router-outlet>
   </main>

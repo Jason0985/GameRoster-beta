@@ -10,7 +10,110 @@
 	min-height: 0;
 	width: 100%;
 	box-sizing: border-box;
+	padding-top: 4px;
 	padding-bottom: 88px;
+  }
+
+  .top-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	min-height: 42px;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 3px 10px 3px 16px;
+  
+	border: 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 0 0 18px 18px;
+  
+	background: rgba(31, 22, 30, 0.28);
+	box-shadow:
+	  0 5px 18px rgba(13, 5, 19, 0.12),
+	  inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+  
+	backdrop-filter: blur(18px) saturate(135%);
+	-webkit-backdrop-filter: blur(18px) saturate(135%);
+  }
+  
+  .top-bar-title {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	color: var(--color-text);
+	font-size: 15px;
+	font-weight: 800;
+  }
+
+  .top-bar-title img {
+	display: block;
+	width: 24px;
+	height: 24px;
+	object-fit: contain;
+  }
+  
+  .top-bar-title::first-letter {
+	color: var(--color-primary-light);
+  }
+  
+  .notification-button {
+	position: relative;
+	display: grid;
+	place-items: center;
+	width: 34px;
+	height: 34px;
+	padding: 0;
+  
+	border: 0;
+	border-radius: 50%;
+  
+	background: transparent !important;
+	box-shadow: none !important;
+	color: var(--color-primary-light);
+  
+	appearance: none;
+	-webkit-appearance: none;
+	-webkit-tap-highlight-color: transparent;
+  }
+  
+  .notification-button::before,
+  .notification-button::after {
+	display: none;
+  }
+  
+  .notification-button mat-icon {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+  }
+  
+  .notification-button:hover {
+	background: rgba(255, 107, 129, 0.1) !important;
+  }
+  
+  .notification-button:active {
+	transform: scale(0.92);
+  }
+  
+  .notification-button:focus {
+	outline: none;
+  }
+  
+  .notification-button:focus-visible {
+	outline: 2px solid var(--color-primary-light);
+	outline-offset: 2px;
+  }
+  
+  .notification-dot {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 6px;
+	height: 6px;
+	border: 2px solid rgba(31, 22, 30, 0.85);
+	border-radius: 50%;
+	background: var(--color-primary);
   }
   
   .bottom-nav {
@@ -84,18 +187,6 @@
   
   .bottom-nav:has(.bottom-nav-link:nth-child(3).active)::before {
 	transform: translateX(200%) scaleX(1.02);
-  }
-
-  .bottom-nav:has(.bottom-nav-link:nth-child(1).active)::before {
-	transform: translateX(0);
-  }
-  
-  .bottom-nav:has(.bottom-nav-link:nth-child(2).active)::before {
-	transform: translateX(100%);
-  }
-  
-  .bottom-nav:has(.bottom-nav-link:nth-child(3).active)::before {
-	transform: translateX(200%);
   }
   
   .bottom-nav-link {
