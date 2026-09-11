@@ -7,8 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
-import { GameService } from '../../game.service';
-import { Player as PlayerModel } from '../../player.model';
+import { GameService } from '../../../game.service';
+import { Player as PlayerModel } from '../../../player.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 

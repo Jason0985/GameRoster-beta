@@ -11,14 +11,14 @@ export const routes: Routes = [
   {
     path: 'ranking',
     loadComponent: () =>
-      import('./features/scoreboard/scoreboard').then(
+      import('./features/ranking/scoreboard/scoreboard').then(
         (module) => module.Scoreboard
       ),
   },
   {
     path: 'ranking/end-score',
     loadComponent: () =>
-      import('./features/end-score/end-score').then(
+      import('./features/ranking/end-score/end-score').then(
         (module) => module.EndScore
       ),
   },
