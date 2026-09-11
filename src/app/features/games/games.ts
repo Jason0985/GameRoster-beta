@@ -18,11 +18,7 @@ export class Apps {
   readonly searchTerm = signal('');
 
   readonly gameApps: GameApp[] = [
-    { title: 'Catan', category: 'Brettspiel', description: 'Siedlungen, Handel und große Runden.', icon: 'castle' },
-    { title: 'Carcassonne', category: 'Plättchenspiel', description: 'Landschaften legen und Gebiete wachsen lassen.', icon: 'map' },
-    { title: 'Azul', category: 'Familienspiel', description: 'Muster bauen und Punkte sammeln.', icon: 'grid_view' },
-    { title: 'Wingspan', category: 'Strategie', description: 'Vögel sammeln und das beste Habitat bauen.', icon: 'flutter_dash' },
-    { title: 'Terraforming Mars', category: 'Expertenspiel', description: 'Den roten Planeten gemeinsam verändern.', icon: 'public' },
+    { title: 'Flip 7', category: 'Kartenspiel', description: 'Risiko eingehen, Karten aufdecken und Punkte sammeln.', icon: 'casino' },
   ];
 
   readonly filteredApps = computed(() => {

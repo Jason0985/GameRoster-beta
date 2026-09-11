@@ -52,7 +52,7 @@
 .apps-search input::placeholder { color: var(--color-text-subtle); }
 .apps-search mat-icon { color: var(--color-primary-light); }
 
-.game-list { display: grid; gap: 10px; }
+.game-list { display: flex; flex-direction: column; gap: 10px; }
 
 .game-card {
 	display: flex;
