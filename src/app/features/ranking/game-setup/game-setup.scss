@@ -104,6 +104,8 @@
 .player-card {
 	display: flex;
 	justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
 	gap: 16px;
 	min-height: 92px;
 	padding: 16px 18px;
