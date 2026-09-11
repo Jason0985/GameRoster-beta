@@ -18,11 +18,13 @@ import { map } from 'rxjs/operators';
 })
 export class EndScore {
   players$: Observable<Player[]>;
+  roundCount$: Observable<number>
 
   constructor(
     private game: GameService,
     private router: Router,
   ) {
+    this.roundCount$ = this.game.roundCount$;
     this.players$ = this.game.players$.pipe(
       map((players) => players.slice().sort((a, b) => b.score - a.score))
     );

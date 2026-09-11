@@ -31,11 +31,13 @@ export class Scoreboard {
   hasCompletedRound = false;
   roundScores: Record<string, number | null> = {};
   players$: Observable<PlayerModel[]>;
-
+  roundCount$: Observable<number>
+  
   constructor(
     private game: GameService,
     private router: Router,
   ) {
+    this.roundCount$ = this.game.roundCount$;
     this.players$ = this.game.players$.pipe(
       map((players) => players.slice().sort((a, b) => b.score - a.score))
     );

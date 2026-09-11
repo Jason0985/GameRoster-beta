@@ -9,6 +9,9 @@ export class GameService {
   private playersSubject = new BehaviorSubject<Player[]>(this.load());
   players$ = this.playersSubject.asObservable();
 
+  private roundCountSubject = new BehaviorSubject(0);
+  roundCount$ = this.roundCountSubject.asObservable();
+
   private load(): Player[] {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -61,6 +64,7 @@ export class GameService {
     );
     this.playersSubject.next(players);
     this.save(players);
+    this.roundCountSubject.next(this.roundCountSubject.value + 1);
   }
 
   resetScores() {
@@ -70,6 +74,7 @@ export class GameService {
     }));
     this.playersSubject.next(players);
     this.save(players);
+    this.roundCountSubject.next(0);
   }
 
   resetGame() {
