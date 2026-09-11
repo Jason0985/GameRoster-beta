@@ -17,6 +17,18 @@
   </header>
 
   <main>
+    <section class="todo-list" aria-labelledby="todo-title">
+      <h1 id="todo-title">Todo List</h1>
+
+      @for (todo of todos; track $index) {
+      <div class="todo-item">
+        {{ todo.name }}
+      </div>
+      } @empty {
+      <p>Keine Todos gefunden.</p>
+      }
+    </section>
+
     <router-outlet></router-outlet>
   </main>
 
