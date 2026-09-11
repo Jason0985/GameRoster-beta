@@ -30,7 +30,7 @@
   </mat-card>
 
   <div class="list">
-    <mat-card *ngFor="let p of players$ | async; let rank = index; trackBy: trackById" class="player-card">
+    <mat-card *ngFor="let p of players$ | async; let rank = index; trackBy: trackById" class="player-card ui-surface">
       <div class="mat-card-wrapper">
         <div class="info">
           <div class="player-heading">
@@ -55,9 +55,9 @@
   </div>
 
   <div class="footer">
-    <button *ngIf="!gameStarted" mat-flat-button color="primary" (click)="startGame()">
-      <mat-icon>play_arrow</mat-icon>
+    <button mat-flat-button color="primary" class="ui-button">
       Spiel starten
+      <mat-icon>play_arrow</mat-icon>
     </button>
     <button *ngIf="gameStarted" mat-stroked-button color="accent" (click)="nextRound()">
       <mat-icon>arrow_forward</mat-icon>

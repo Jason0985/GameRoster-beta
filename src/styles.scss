@@ -1,13 +1,48 @@
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
+
+:root {
+  --color-background: #171213;
+  --color-surface: rgba(255, 255, 255, 0.1);
+  --color-surface-strong: rgba(255, 255, 255, 0.16);
+  --color-border: rgba(255, 255, 255, 0.16);
+
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.66);
+  --color-text-subtle: rgba(255, 255, 255, 0.55);
+
+  --color-primary: #ff6b81;
+  --color-primary-light: #ff9aaa;
+  --color-primary-soft: rgba(255, 107, 129, 0.16);
+
+  --color-secondary: #7c4dff;
+  --color-danger: #f44336;
+
+  --gradient-accent: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+
+  --shadow-surface: 0 18px 45px rgba(13, 5, 19, 0.22);
+  --shadow-navigation: 0 14px 36px rgba(13, 5, 19, 0.34);
+
+  --radius-small: 10px;
+  --radius-medium: 16px;
+  --radius-large: 22px;
+  --radius-pill: 999px;
+
+  --content-width: 680px;
+  --page-padding-mobile: 16px;
+  --page-padding-desktop: 24px;
+
+  --transition-fast: 160ms ease;
+  --transition-normal: 240ms ease;
+}
 
 html {
   height: 100%;
   width: 100%;
+
   @include mat.theme(
     (
       color: (
@@ -26,7 +61,37 @@ body {
   min-width: 100%;
   min-height: 100%;
   overflow-x: hidden;
-  background-color: #171213;
+}
+
+body {
+  color-scheme: dark;
+  min-height: 100%;
+  background-color: var(--color-background);
+  background-image:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(255, 205, 210, 0.08),
+      transparent 15%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(244, 143, 177, 0.06),
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(255, 138, 128, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(244, 143, 177, 0.12),
+      rgba(244, 67, 54, 0.08)
+    );
+  background-attachment: fixed;
+  background-size: cover;
+  color: var(--color-text);
+  font: var(--mat-sys-body-medium);
 }
 
 app-root {
@@ -35,33 +100,109 @@ app-root {
   min-height: 100vh;
 }
 
-body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
-  color-scheme: dark;
+/* Wiederverwendbare Layout-Klassen */
 
-  // Set a default background, font and text colors for the application using
-  // Angular Material's system-level CSS variables. Learn more about these
-  // variables at https://material.angular.dev/guide/system-variables
-  background-color: #171213;
-  background-image:
-    radial-gradient(circle at 10% 20%, rgba(255, 205, 210, 0.08), transparent 15%),
-    radial-gradient(circle at 90% 80%, rgba(244, 143, 177, 0.06), transparent 20%),
-    radial-gradient(circle at 100% 0%, rgba(255, 138, 128, 0.12), transparent 30%),
-    linear-gradient(135deg, rgba(244, 143, 177, 0.12), rgba(244, 67, 54, 0.08));
-  background-attachment: fixed;
-  background-size: cover;
-  color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
-
-  // Reset the user agent margin.
-  height: 100%;
+.ui-container {
+  width: min(100%, var(--content-width));
+  box-sizing: border-box;
+  margin-inline: auto;
+  padding-inline: var(--page-padding-mobile);
 }
-/* You can add global styles to this file, and also import other style files */
 
-/* Slightly translucent surfaces for cards to show background blur */
-.mat-card, .player-card, .scoreboard-root mat-card {
-  background-color: rgba(255,255,255,0.78);
-  backdrop-filter: blur(6px);
+.ui-surface {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-large);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-surface);
+  backdrop-filter: blur(16px) saturate(125%);
+}
+
+.ui-badge {
+  display: inline-block;
+  padding: 7px 13px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.ui-accent {
+  background: var(--gradient-accent);
+  background-clip: text;
+  color: transparent;
+}
+
+.ui-muted {
+  color: var(--color-text-muted);
+}
+
+.ui-subtle {
+  color: var(--color-text-subtle);
+}
+
+.ui-button {
+  min-height: 48px;
+  border-radius: var(--radius-pill);
+  transition:
+    transform var(--transition-fast),
+    filter var(--transition-fast);
+}
+
+.ui-button:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+/* Gemeinsame Animationen */
+
+@keyframes ui-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ui-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ui-fade-in {
+  animation: ui-fade-in 400ms ease both;
+}
+
+.ui-pop-in {
+  animation: ui-pop-in 300ms ease both;
+}
+
+@media (min-width: 600px) {
+  .ui-container {
+    padding-inline: var(--page-padding-desktop);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

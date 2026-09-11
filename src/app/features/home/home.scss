@@ -13,28 +13,11 @@
   text-align: center;
 }
 
-.badge {
-  display: inline-block;
-  padding: 7px 13px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
 
 .title {
   margin: 18px 0 10px;
   font-weight: 700;
   line-height: 0.98;
-}
-
-.title .accent {
-  background: linear-gradient(90deg, #ff6b81, #7c4dff);
-  background-clip: text;
-  color: transparent;
 }
 
 .subtitle {
@@ -47,15 +30,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: min(100%, 680px);
-  box-sizing: border-box;
-  margin-top: 42px;
   padding: 48px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 18px 45px rgba(13, 5, 19, 0.22);
-  backdrop-filter: blur(16px) saturate(125%);
   text-align: center;
 }
 
