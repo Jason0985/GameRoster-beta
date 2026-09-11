@@ -128,7 +128,6 @@
 	color: var(--color-text);
 	font-size: 18px;
 	font-weight: 800;
-	box-shadow: 0 7px 16px rgba(124, 77, 255, 0.25);
 }
 
 .player-details {
@@ -154,7 +153,7 @@
 	width: 42px;
 	height: 42px;
 	flex: 0 0 42px;
-	box-shadow: 0 8px 18px rgba(244, 67, 54, 0.28);
+	box-shadow: none;
 }
 
 .start-button {

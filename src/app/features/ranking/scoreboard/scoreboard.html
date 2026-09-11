@@ -30,12 +30,12 @@
   </div>
 
   <div class="footer">
-    <button mat-stroked-button color="accent" (click)="nextRound()">
+    <button mat-flat-button color="primary" class="ui-button round-button" (click)="nextRound()">
       <mat-icon aria-hidden="true">arrow_forward</mat-icon>
       In die nächste Runde
     </button>
-    <button *ngIf="hasCompletedRound" mat-flat-button color="primary" class="ui-button ui-button--icon-after"
-      (click)="endGame()">
+
+    <button *ngIf="hasCompletedRound" mat-stroked-button class="ui-button danger-button" (click)="endGame()">
       Spiel beenden
       <mat-icon aria-hidden="true">flag</mat-icon>
     </button>

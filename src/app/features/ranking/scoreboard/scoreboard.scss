@@ -107,18 +107,6 @@
   justify-content: center;
 }
 
-.footer button {
-  min-height: 48px;
-  padding: 0 20px;
-  border-radius: var(--radius-pill);
-  border-color: var(--color-surface-strong);
-  color: var(--color-text);
-}
-
-.footer mat-icon {
-  margin-right: 6px;
-}
-
 @media (min-width: 600px) {
   .scoreboard-root {
     padding: 48px 24px 56px;
