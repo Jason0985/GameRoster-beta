@@ -43,4 +43,11 @@ export const routes: Routes = [
         (module) => module.Profile
       ),
   },
+  {
+    path: 'auth',
+    loadComponent: () =>
+      import('./features/auth/auth').then(
+        (module) => module.Auth
+      ),
+  },
 ];

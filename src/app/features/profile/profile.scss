@@ -92,6 +92,12 @@
     margin-left: 8px;
   }
   
+  .profile-actions {
+    display: flex;
+    align-self: center;
+    gap: 12px;
+  }
+
   @media (min-width: 600px) {
     .profile-root {
       padding: 48px 24px 56px;

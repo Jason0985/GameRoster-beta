@@ -13,25 +13,25 @@
         </p>
     </header>
 
-    <!-- <section class="profile-card ui-surface">
+    <section class="profile-card ui-surface">
         <div class="profile-card-heading">
             <mat-icon aria-hidden="true">account_circle</mat-icon>
             <div>
-                <h2>Spielerprofil</h2>
-                <p>Deine Daten für Spielrunden.</p>
+                <h2>Noch nicht angemeldet?</h2>
+                <p>Speichere deine Spielerprofile und Spielstände.</p>
             </div>
         </div>
 
-        <mat-form-field appearance="outline">
-            <mat-label>Dein Name</mat-label>
-            <input matInput value="Spieler" />
-        </mat-form-field>
+        <div class="profile-actions">
+            <button mat-flat-button color="primary" routerLink="/auth">
+                Anmelden
+            </button>
 
-        <button mat-flat-button color="primary" class="ui-button">
-            Profil speichern
-            <mat-icon aria-hidden="true">save</mat-icon>
-        </button>
-    </section> -->
+            <button mat-stroked-button routerLink="/auth">
+                Registrieren
+            </button>
+        </div>
+    </section>
 
     <section class="profile-card ui-surface">
         <div class="profile-card-heading">
