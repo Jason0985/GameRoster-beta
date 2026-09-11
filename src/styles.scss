@@ -252,3 +252,16 @@ button.mat-mdc-button-base:not(.mat-mdc-fab):not(.mat-mdc-mini-fab):not(.mat-mdc
   --mdc-outlined-button-label-text-color: var(--color-danger-light);
   --mdc-outlined-button-outline-color: var(--color-danger);
 }
+
+.bottom-nav-link {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav-link:focus {
+  outline: none;
+}
+
+.bottom-nav-link:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
+}

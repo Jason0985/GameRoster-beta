@@ -29,4 +29,11 @@ export const routes: Routes = [
         (module) => module.EndScore
       ),
   },
+  {
+    path: 'profile',
+    loadComponent: () =>
+      import('./features/profile/profile').then(
+        (module) => module.Profile
+      ),
+  },
 ];
