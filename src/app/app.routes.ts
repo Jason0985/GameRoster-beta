@@ -11,6 +11,13 @@ export const routes: Routes = [
   {
     path: 'ranking',
     loadComponent: () =>
+      import('./features/ranking/game-setup/game-setup').then(
+        (module) => module.GameSetup
+      ),
+  },
+  {
+    path: 'ranking/game',
+    loadComponent: () =>
       import('./features/ranking/scoreboard/scoreboard').then(
         (module) => module.Scoreboard
       ),

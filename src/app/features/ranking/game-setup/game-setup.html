@@ -1,0 +1,52 @@
+<div class="game-setup-root">
+    <section class="ui-hero hero">
+        <div class="ui-badge">V1.02</div>
+        <h1 class="ui-title title">Spiel <span class="ui-accent">vorbereiten</span></h1>
+        <p class="ui-subtitle subtitle">Füge die Mitspieler hinzu und starte danach die erste Runde.</p>
+    </section>
+
+    <mat-card class="add-card ui-surface">
+        <mat-card-content class="add-content">
+            <div class="add-heading">
+                <div class="add-icon"><mat-icon aria-hidden="true">person_add</mat-icon></div>
+                <div>
+                    <div class="add-title">Spieler hinzufügen</div>
+                    <div class="add-hint">Wer sitzt heute mit am Tisch?</div>
+                </div>
+            </div>
+            <div class="top">
+                <mat-form-field appearance="outline" class="name-field">
+                    <mat-label>Name eingeben</mat-label>
+                    <input matInput [(ngModel)]="name" (keyup.enter)="add()" />
+                </mat-form-field>
+                <button mat-flat-button color="primary" class="add-button ui-button ui-button--icon-after"
+                    (click)="add()">
+                    <span>Spieler hinzufügen</span>
+                    <mat-icon aria-hidden="true">add</mat-icon>
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <div class="list">
+        <mat-card *ngFor="let player of players$ | async; let rank = index; trackBy: trackById"
+            class="player-card ui-surface">
+            <div class="player-info">
+                <span class="rank-badge">{{ rank + 1 }}</span>
+                <div class="player-details">
+                    <div class="player-name">{{ player.name }}</div>
+                    <div class="player-score">{{ player.score }} Punkte</div>
+                </div>
+            </div>
+            <button mat-mini-fab color="warn" class="remove-player-button" type="button"
+                [attr.aria-label]="player.name + ' entfernen'" (click)="removePlayer(player.id)">
+                <mat-icon aria-hidden="true">remove</mat-icon>
+            </button>
+        </mat-card>
+    </div>
+
+    <button mat-flat-button color="primary" class="start-button ui-button ui-button--icon-after" (click)="startGame()">
+        <span>Spiel starten</span>
+        <mat-icon aria-hidden="true">play_arrow</mat-icon>
+    </button>
+</div>

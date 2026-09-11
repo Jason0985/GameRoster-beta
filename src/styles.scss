@@ -109,6 +109,23 @@ app-root {
   padding-inline: var(--page-padding-mobile);
 }
 
+.ui-hero {
+  width: min(100%, var(--content-width));
+  text-align: center;
+}
+
+.ui-title {
+  margin: 18px 0 10px;
+  font-weight: 700;
+  line-height: 0.98;
+}
+
+.ui-subtitle {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
 .ui-surface {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-large);
@@ -154,6 +171,17 @@ app-root {
 .ui-button:hover {
   filter: brightness(1.08);
   transform: translateY(-1px);
+}
+
+.ui-button--icon-after {
+  flex-direction: row;
+  gap: 9px;
+}
+
+.ui-button--icon-after mat-icon {
+  order: 2;
+  margin-right: 0;
+  margin-left: 6px;
 }
 
 /* Gemeinsame Animationen */

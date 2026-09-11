@@ -1,20 +1,19 @@
 <div class="end-score-root">
   <header class="end-header">
-    <div class="badge">Spiel beendet</div>
+    <div class="ui-badge">Spiel beendet</div>
     <h1>Endpunktestand</h1>
     <p>Das finale Ranking der Runde.</p>
   </header>
 
-  <mat-card
-    *ngFor="let player of players$ | async; let rank = index; trackBy: trackById">
-    <div class="ranking-card">
-    <div class="player-info">
-      <div class="rank-badge">{{ rank + 1 }}</div>
-      <div class="player-name">{{ player.name }}</div>
-    </div>
-    <div class="score">
-      <div class="player-score">{{ player.score }} <span>Pkt.</span></div>
-    </div>
+  <mat-card *ngFor="let player of players$ | async; let rank = index; trackBy: trackById">
+    <div class="ranking-card ui-surface">
+      <div class="player-info">
+        <div class="rank-badge">{{ rank + 1 }}</div>
+        <div class="player-name">{{ player.name }}</div>
+      </div>
+      <div class="score">
+        <div class="player-score">{{ player.score }} <span>Pkt.</span></div>
+      </div>
     </div>
   </mat-card>
 

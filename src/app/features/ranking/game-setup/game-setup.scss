@@ -1,0 +1,185 @@
+.game-setup-root {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	min-height: calc(100dvh - 88px);
+	box-sizing: border-box;
+	padding: 28px 16px 36px;
+	color: var(--color-text);
+}
+
+.hero {
+	margin-bottom: 17px;
+}
+
+.add-card,
+.player-card {
+	width: min(100%, var(--content-width));
+	box-sizing: border-box;
+}
+
+.add-card {
+	position: relative;
+	padding: 18px;
+	overflow: hidden;
+}
+
+.add-card::before {
+	position: absolute;
+	inset: 0 auto 0 0;
+	width: 5px;
+	content: '';
+	background: var(--gradient-accent);
+}
+
+.add-content {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+.add-heading,
+.top,
+.player-info {
+	display: flex;
+	align-items: center;
+}
+
+.add-heading {
+	gap: 12px;
+}
+
+.add-icon {
+	display: grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	flex: 0 0 40px;
+	border-radius: 13px;
+	background: var(--color-primary-soft);
+	color: var(--color-primary-light);
+}
+
+.add-title {
+	color: var(--color-text);
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.add-hint {
+	margin-top: 3px;
+	color: var(--color-text-subtle);
+	font-size: 12px;
+}
+
+.top {
+	gap: 8px;
+}
+
+.name-field {
+	flex: 1;
+	margin-bottom: -1.25em;
+}
+
+.name-field input {
+	color: var(--color-text);
+}
+
+.add-button {
+	min-height: 56px;
+	padding: 0 18px;
+	border-radius: var(--radius-medium);
+	white-space: nowrap;
+}
+
+.list {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	gap: 16px;
+	margin-top: 18px;
+}
+
+.player-card {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	min-height: 92px;
+	padding: 16px 18px;
+}
+
+.player-info {
+	gap: 16px;
+	min-width: 0;
+}
+
+.rank-badge {
+	display: grid;
+	place-items: center;
+	width: 42px;
+	height: 42px;
+	flex: 0 0 42px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: var(--radius-medium);
+	background: linear-gradient(145deg, rgba(255, 107, 129, 0.9), rgba(124, 77, 255, 0.9));
+	color: var(--color-text);
+	font-size: 18px;
+	font-weight: 800;
+	box-shadow: 0 7px 16px rgba(124, 77, 255, 0.25);
+}
+
+.player-details {
+	min-width: 0;
+}
+
+.player-name {
+	overflow: hidden;
+	color: var(--color-text);
+	font-size: 20px;
+	font-weight: 600;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.player-score {
+	margin-top: 4px;
+	color: var(--color-text-subtle);
+	font-size: 13px;
+}
+
+.remove-player-button {
+	width: 42px;
+	height: 42px;
+	flex: 0 0 42px;
+	box-shadow: 0 8px 18px rgba(244, 67, 54, 0.28);
+}
+
+.start-button {
+	margin-top: 26px;
+}
+
+@media (min-width: 600px) {
+	.game-setup-root {
+		padding: 48px 24px 56px;
+	}
+}
+
+@media (max-width: 420px) {
+	.add-card {
+		padding: 16px 14px;
+	}
+
+	.top {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.add-button {
+		width: 100%;
+	}
+
+	.player-card {
+		padding: 14px;
+	}
+}

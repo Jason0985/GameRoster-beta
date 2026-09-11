@@ -9,21 +9,7 @@
 }
 
 .hero {
-  width: min(100%, 680px);
   text-align: center;
-}
-
-
-.title {
-  margin: 18px 0 10px;
-  font-weight: 700;
-  line-height: 0.98;
-}
-
-.subtitle {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.66);
-  font-size: 15px;
 }
 
 .home-placeholder {
@@ -37,7 +23,7 @@
 .home-placeholder mat-icon {
   width: 48px;
   height: 48px;
-  color: #ff9aaa;
+  color: var(--color-primary-light);
   font-size: 48px;
 }
 
@@ -48,7 +34,7 @@
 
 .home-placeholder p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.66);
+  color: var(--color-text-muted);
 }
 
 @media (min-width: 600px) {

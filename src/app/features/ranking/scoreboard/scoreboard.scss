@@ -11,135 +11,13 @@
   color: #fff;
 }
 
-.scoreboard-root .hero {
-  width: min(100%, 680px);
-  text-align: center;
-  position: relative;
+.hero {
   margin-bottom: 17px;
 }
 
-.scoreboard-root .badge {
-  display: inline-block;
-  padding: 7px 13px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  backdrop-filter: blur(6px);
-}
-
-.scoreboard-root .title {
-  margin: 18px 0 10px;
-  font-weight: 700;
-  line-height: 0.98;
-}
-
-.scoreboard-root .title .accent {
-  background: linear-gradient(90deg, #ff6b81, #7c4dff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.scoreboard-root .subtitle {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.66);
-  font-size: 15px;
-}
-
-.scoreboard-root .add-card,
 .scoreboard-root .player-card {
   width: min(100%, 680px);
   box-sizing: border-box;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 18px 45px rgba(13, 5, 19, 0.22);
-  backdrop-filter: blur(16px) saturate(125%);
-}
-
-.scoreboard-root .add-card {
-  border-radius: 22px;
-  padding: 18px;
-  overflow: hidden;
-  position: relative;
-}
-
-.scoreboard-root .add-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 5px;
-  height: 100%;
-  background: linear-gradient(180deg, #ff6b81, #7c4dff);
-}
-
-.add-content {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.add-heading {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.add-icon {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  flex: 0 0 40px;
-  border-radius: 13px;
-  background: rgba(255, 107, 129, 0.16);
-  color: #ff9aaa;
-}
-
-.add-icon mat-icon {
-  font-size: 21px;
-}
-
-.add-title {
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.add-hint {
-  margin-top: 3px;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 12px;
-}
-
-.top {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.name-field {
-  flex: 1;
-  margin-bottom: -1.25em;
-}
-
-.name-field input {
-  color: #fff;
-}
-
-.add-button {
-  min-height: 56px;
-  padding: 0 18px;
-  border-radius: 14px;
-  white-space: nowrap;
-}
-
-.add-button mat-icon {
-  margin-right: 6px;
 }
 
 .list {
@@ -157,7 +35,6 @@
   align-items: center;
   min-height: 92px;
   padding: 16px 18px;
-  border-radius: 18px;
   gap: 16px;
 }
 
@@ -188,10 +65,10 @@
   width: 30px;
   height: 30px;
   flex: 0 0 30px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
   background: linear-gradient(145deg, rgba(255, 107, 129, 0.9), rgba(124, 77, 255, 0.9));
-  color: #fff;
+  color: var(--color-text);
   font-size: 13px;
   font-weight: 800;
   box-shadow: 0 7px 16px rgba(124, 77, 255, 0.25);
@@ -200,19 +77,18 @@
 .name {
   font-weight: 600;
   font-size: 20px;
-  letter-spacing: -0.01em;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .score {
-  color: rgba(255, 255, 255, 0.58);
+  color: var(--color-text-subtle);
   font-size: 13px;
 }
 
 .score span {
-  color: #fff;
+  color: var(--color-text);
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
@@ -220,18 +96,6 @@
 
 .score-field {
   width: 112px;
-}
-
-.remove-player-button {
-  width: 42px;
-  height: 42px;
-  flex: 0 0 42px;
-  box-shadow: 0 8px 18px rgba(244, 67, 54, 0.28);
-}
-
-.remove-player-button mat-icon {
-  margin: 0;
-  color: #fff;
 }
 
 .footer {
@@ -246,9 +110,9 @@
 .footer button {
   min-height: 48px;
   padding: 0 20px;
-  border-radius: 999px;
-  border-color: rgba(255, 255, 255, 0.5);
-  color: #fff;
+  border-radius: var(--radius-pill);
+  border-color: var(--color-surface-strong);
+  color: var(--color-text);
 }
 
 .footer mat-icon {
@@ -262,22 +126,8 @@
 }
 
 @media (max-width: 420px) {
-  .scoreboard-root .add-card {
-    padding: 16px 14px;
-  }
-
-  .top {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .add-button {
-    width: 100%;
-  }
-
   .player-card {
     padding: 14px;
-    padding: 17px 30px;
   }
 
   .score-field {

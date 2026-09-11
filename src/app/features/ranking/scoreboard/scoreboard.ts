@@ -28,8 +28,6 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./scoreboard.scss'],
 })
 export class Scoreboard {
-  name = '';
-  gameStarted = false;
   hasCompletedRound = false;
   roundScores: Record<string, number | null> = {};
   players$: Observable<PlayerModel[]>;
@@ -43,21 +41,8 @@ export class Scoreboard {
     );
   }
 
-  add() {
-    this.game.addPlayer(this.name);
-    this.name = '';
-  }
-
-  removePlayer(playerId: string) {
-    this.game.removePlayer(playerId);
-  }
-
   setRoundScore(playerId: string, score: number | null) {
     this.roundScores[playerId] = score;
-  }
-
-  startGame() {
-    this.gameStarted = true;
   }
 
   nextRound() {
