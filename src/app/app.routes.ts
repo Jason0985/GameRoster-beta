@@ -44,7 +44,7 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'auth',
+    path: 'profile/auth',
     loadComponent: () =>
       import('./features/auth/auth').then(
         (module) => module.Auth
