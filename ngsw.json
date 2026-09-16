@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1789129639744,
+  "timestamp": 1789578019169,
   "index": "/GameRoster-beta/index.html",
   "assetGroups": [
     {
@@ -11,21 +11,21 @@
         "ignoreVary": true
       },
       "urls": [
-        "/GameRoster-beta/chunk-Bd1MuAYV.js",
-        "/GameRoster-beta/chunk-C7bsnFHd.js",
-        "/GameRoster-beta/chunk-CBWETdOp.js",
-        "/GameRoster-beta/chunk-CBX0agvU.js",
-        "/GameRoster-beta/chunk-CiMB2SoI.js",
-        "/GameRoster-beta/chunk-D7GCpUan.js",
-        "/GameRoster-beta/chunk-Dl_rUxCR.js",
-        "/GameRoster-beta/chunk-DnTeLbZD.js",
-        "/GameRoster-beta/chunk-iBaRpGTI.js",
-        "/GameRoster-beta/chunk-wlmwmddE.js",
+        "/GameRoster-beta/chunk-BmrxQCSV.js",
+        "/GameRoster-beta/chunk-BuMMtNoZ.js",
+        "/GameRoster-beta/chunk-BvlkpuW9.js",
+        "/GameRoster-beta/chunk-BzsUmCwI.js",
+        "/GameRoster-beta/chunk-CKJLBBs7.js",
+        "/GameRoster-beta/chunk-Cnd8A9kr.js",
+        "/GameRoster-beta/chunk-CvHKnFRj.js",
+        "/GameRoster-beta/chunk-FbOKOtrK.js",
+        "/GameRoster-beta/chunk-Ip1SpM2Q.js",
+        "/GameRoster-beta/chunk-uD3sVibN.js",
         "/GameRoster-beta/favicon.ico",
         "/GameRoster-beta/index.html",
-        "/GameRoster-beta/main-NR3JJETE.js",
+        "/GameRoster-beta/main-26LBLFNH.js",
         "/GameRoster-beta/manifest.webmanifest",
-        "/GameRoster-beta/styles-3NFT6AW3.css"
+        "/GameRoster-beta/styles-NE3UU7EG.css"
       ],
       "patterns": []
     },
@@ -51,23 +51,23 @@
     "/GameRoster-beta/assets/icons/app-beta-icon.jpg": "59bb6b7c87c1abd4460587f48c3584768d1d79c8",
     "/GameRoster-beta/assets/icons/app_icon.jpg": "4bde37064230483c929f49dd70b7201e66f27457",
     "/GameRoster-beta/assets/icons/gameRooster-icon.png": "e3e6fadc9da2c395c407d22307b516f4506c9365",
-    "/GameRoster-beta/chunk-Bd1MuAYV.js": "54a1ee59ffdc4717ffd4a69ac310f29b81801aaf",
-    "/GameRoster-beta/chunk-C7bsnFHd.js": "cc059b13bfa4454537a49700d3c3068883c9658e",
-    "/GameRoster-beta/chunk-CBWETdOp.js": "cb88ad5e57204b64d732ff240f476cc6277eeade",
-    "/GameRoster-beta/chunk-CBX0agvU.js": "d0f398a29474b0dd5908045ccc3c55df8d3ababe",
-    "/GameRoster-beta/chunk-CiMB2SoI.js": "1557fa7923a7d906c8cec9602bfa16bb2ff755a3",
-    "/GameRoster-beta/chunk-D7GCpUan.js": "e2f88d614ad18c8e389d8e05473797a6b98297c9",
-    "/GameRoster-beta/chunk-Dl_rUxCR.js": "29665a697407932d6962c608c6a44d0d1054318a",
-    "/GameRoster-beta/chunk-DnTeLbZD.js": "0066d8ccf90cb9e55909d39a34a48356e3261ecf",
-    "/GameRoster-beta/chunk-iBaRpGTI.js": "86e29ed0676487e377c5c29b6d1ce2181f118d6a",
-    "/GameRoster-beta/chunk-wlmwmddE.js": "443a6444faa08c3484eddd5d59d1a40e5e71153d",
+    "/GameRoster-beta/chunk-BmrxQCSV.js": "45925426a396cc64f4bfb249c521690ddb75ab8b",
+    "/GameRoster-beta/chunk-BuMMtNoZ.js": "b3e4d486bb3a101caecfe3fe04f2b74fa8e8e378",
+    "/GameRoster-beta/chunk-BvlkpuW9.js": "40501d18837447932ca479f081f07e99c9edf159",
+    "/GameRoster-beta/chunk-BzsUmCwI.js": "8aff28be17be929381655f99a3a71899c29e7ba1",
+    "/GameRoster-beta/chunk-CKJLBBs7.js": "eaf5046fee71aa25ac5182784a5035726b5863fe",
+    "/GameRoster-beta/chunk-Cnd8A9kr.js": "aa833770e51f2d7710128e80a9d310f3f05c0236",
+    "/GameRoster-beta/chunk-CvHKnFRj.js": "e22995092d8551228ec3e39c072cdd4ad772d889",
+    "/GameRoster-beta/chunk-FbOKOtrK.js": "ec701a3c45d27e26c48f69b8d8a4ffc42daed490",
+    "/GameRoster-beta/chunk-Ip1SpM2Q.js": "32061de5ad20dc86c0b2dc44039b88b11f34b9cd",
+    "/GameRoster-beta/chunk-uD3sVibN.js": "456b048fd4ec016862abc933afbac54899cdca22",
     "/GameRoster-beta/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
     "/GameRoster-beta/gameRooster-icon.png": "e3e6fadc9da2c395c407d22307b516f4506c9365",
-    "/GameRoster-beta/index.html": "fc472e8c7791b8a8aa0f1803a63b2d1e71606d91",
-    "/GameRoster-beta/main-NR3JJETE.js": "d3173407cacf3c111cb5557f2a6d14801a147eb5",
+    "/GameRoster-beta/index.html": "b9976434546372599e6359899ff81312ecdf7f6e",
+    "/GameRoster-beta/main-26LBLFNH.js": "fb614d543367aea00f44a27f088c3fe415138e53",
     "/GameRoster-beta/manifest.webmanifest": "864dc8887a694cb012fb23381b1e98862518c93b",
     "/GameRoster-beta/podium_icon.png": "ad01c9ac9286738f88e733ee1a95fc2afb448459",
-    "/GameRoster-beta/styles-3NFT6AW3.css": "02607c60bc1255dbac7ba381489272c21d7f77fe"
+    "/GameRoster-beta/styles-NE3UU7EG.css": "b86f5f6fe94b4359cfec799c3a7b70d90c4043be"
   },
   "navigationUrls": [
     {
