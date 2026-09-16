@@ -42,8 +42,7 @@
   font-size: 15px;
 }
 
-.scoreboard-root .add-card,
-.scoreboard-root .player-card {
+.scoreboard-root .add-card {
   width: min(100%, 680px);
 }
 
@@ -137,17 +136,6 @@
   margin-top: 18px;
 }
 
-.player-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 92px;
-  padding: 16px 18px;
-  border-radius: 18px;
-  gap: 16px;
-}
-
 .mat-card-wrapper {
   display: flex;
   width: 100%;
@@ -167,27 +155,6 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 12px;
-}
-
-.name {
-  font-weight: 600;
-  font-size: 20px;
-  letter-spacing: -0.01em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.score {
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 13px;
-}
-
-.score span {
-  color: #fff;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1;
 }
 
 .score-field {
@@ -246,11 +213,6 @@
 
   .add-button {
     width: 100%;
-  }
-
-  .player-card {
-    padding: 14px;
-    padding: 17px 30px;
   }
 
   .score-field {

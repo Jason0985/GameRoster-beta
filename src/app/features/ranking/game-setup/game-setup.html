@@ -36,12 +36,12 @@
   <div class="list">
     <mat-card
       *ngFor="let player of players$ | async; let rank = index; trackBy: trackById"
-      class="player-card ui-surface"
+      class="ui-player-card ui-surface"
     >
-      <div class="player-info">
+      <div class="ui-player-info">
         <span class="rank-badge ui-rank-badge">{{ rank + 1 }}</span>
         <div class="player-details">
-          <div class="player-name">{{ player.name }}</div>
+          <div class="ui-player-name">{{ player.name }}</div>
         </div>
       </div>
       <button

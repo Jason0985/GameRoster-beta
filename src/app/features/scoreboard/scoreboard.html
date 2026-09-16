@@ -30,16 +30,17 @@
   <div class="list">
     <mat-card
       *ngFor="let p of players$ | async; let rank = index; trackBy: trackById"
-      class="player-card ui-surface"
+      class="ui-player-card ui-surface"
     >
       <div class="mat-card-wrapper">
-        <div class="info">
+        <div class="ui-player-info info">
           <div class="player-heading">
             <span class="rank-badge ui-rank-badge ui-rank-badge--small">{{ rank + 1 }}</span>
-            <div class="name">{{ p.name }}</div>
+            <div class="ui-player-name name">{{ p.name }}</div>
           </div>
-          <div class="score">
-            <span>{{ p.score }}</span> points
+          <div class="ui-player-score score">
+            <span class="score-value">{{ p.score }}</span>
+            <span class="score-unit">points</span>
           </div>
         </div>
         <mat-form-field

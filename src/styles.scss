@@ -1,8 +1,8 @@
 @use '@angular/material' as mat;
 
 :root {
-  --color-background: #171213;
-  --color-surface: rgba(255, 255, 255, 0.1);
+  --color-background: #1e1e1e;
+  --color-surface: #2f2f2f;
   --color-surface-strong: rgba(255, 255, 255, 0.16);
   --color-border: rgba(255, 255, 255, 0.25);
 
@@ -18,7 +18,7 @@
   --color-danger: #f44336;
   --color-danger-light: #ff8a80;
 
-  --gradient-accent: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  --gradient-accent: #ff6b81;
 
   --shadow-surface: 0 18px 45px rgba(13, 5, 19, 0.22);
   --shadow-navigation: 0 14px 36px rgba(13, 5, 19, 0.34);
@@ -67,13 +67,6 @@ body {
   color-scheme: dark;
   min-height: 100%;
   background-color: var(--color-background);
-  background-image:
-    radial-gradient(circle at 10% 20%, rgba(255, 205, 210, 0.08), transparent 15%),
-    radial-gradient(circle at 90% 80%, rgba(244, 143, 177, 0.06), transparent 20%),
-    radial-gradient(circle at 100% 0%, rgba(255, 138, 128, 0.12), transparent 30%),
-    linear-gradient(135deg, rgba(244, 143, 177, 0.12), rgba(244, 67, 54, 0.08));
-  background-attachment: fixed;
-  background-size: cover;
   color: var(--color-text);
   font: var(--mat-sys-body-medium);
 }
@@ -119,16 +112,61 @@ app-root {
   font-size: 40px;
 }
 
-.ui-ranking-card {
+.ui-player-card {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: min(100%, var(--content-width));
+  min-height: 78px;
   box-sizing: border-box;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-medium);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-surface);
-  backdrop-filter: blur(16px) saturate(125%);
+  gap: 16px;
+  padding: 12px 14px;
+}
+
+mat-card.ui-player-card {
+  flex-direction: row;
+}
+
+.ui-player-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 0;
+  gap: 12px;
+}
+
+.ui-player-name {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--color-text);
+  font-size: 18px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ui-player-score {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-left: auto;
+  color: var(--color-text);
+  font-size: 21px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ui-player-score .score-value {
+  color: var(--color-text);
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.ui-player-score .score-unit {
+  color: var(--color-text-subtle);
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .ui-rank-badge {
@@ -137,13 +175,11 @@ app-root {
   flex: 0 0 40px;
   width: 40px;
   height: 40px;
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-medium);
-  background: linear-gradient(145deg, rgba(255, 107, 129, 0.9), rgba(124, 77, 255, 0.9));
+  background-color: #976bff;
   color: var(--color-text);
   font-size: 18px;
   font-weight: 800;
-  box-shadow: 0 7px 16px rgba(124, 77, 255, 0.25);
 }
 
 .ui-rank-badge--small {
@@ -187,7 +223,6 @@ app-root {
 }
 
 .ui-surface {
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-large);
   background-color: var(--color-surface);
   box-shadow: var(--shadow-surface);
@@ -199,11 +234,9 @@ mat-card.ui-surface {
   --mat-card-container-shape: var(--radius-large);
   --mat-card-container-elevation: var(--shadow-surface);
   overflow: hidden;
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-large);
   background-color: var(--color-surface);
   box-shadow: var(--shadow-surface);
-  backdrop-filter: blur(16px) saturate(125%);
 }
 
 .ui-badge {
@@ -257,7 +290,7 @@ button.mat-mdc-button-base:not(.mat-mdc-fab):not(.mat-mdc-mini-fab):not(.mat-mdc
   margin-left: 0px;
 }
 
-/* Gemeinsame Animationen */
+// /* Gemeinsame Animationen */
 
 @keyframes ui-fade-in {
   from {
@@ -324,7 +357,7 @@ button.mat-mdc-button-base:not(.mat-mdc-fab):not(.mat-mdc-mini-fab):not(.mat-mdc
 
 .danger-button {
   color: var(--color-danger-light) !important;
-  border-color: var(--color-danger) !important;
+  border: none !important;
   --mdc-outlined-button-label-text-color: var(--color-danger-light);
   --mdc-outlined-button-outline-color: var(--color-danger);
 }

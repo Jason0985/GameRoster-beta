@@ -39,43 +39,6 @@
   font-size: 15px;
 }
 
-.ranking-card {
-  gap: 16px;
-  min-height: 92px;
-  padding: 16px 18px;
-}
-
-.player-info {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  min-width: 0;
-}
-
-.player-name {
-  min-width: 0;
-  overflow: hidden;
-  color: #fff;
-  font-size: 26px;
-  font-weight: 600;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.player-score {
-  margin-left: auto;
-  color: #fff;
-  font-size: 24px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.player-score span {
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 13px;
-  font-weight: 400;
-}
-
 .new-game-button {
   align-self: center;
   min-height: 48px;
@@ -91,7 +54,4 @@
 }
 
 @media (max-width: 420px) {
-  .ranking-card {
-    padding: 14px;
-  }
 }
