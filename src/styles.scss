@@ -18,11 +18,7 @@
   --color-danger: #f44336;
   --color-danger-light: #ff8a80;
 
-  --gradient-accent: linear-gradient(
-    90deg,
-    var(--color-primary),
-    var(--color-secondary)
-  );
+  --gradient-accent: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
 
   --shadow-surface: 0 18px 45px rgba(13, 5, 19, 0.22);
   --shadow-navigation: 0 14px 36px rgba(13, 5, 19, 0.34);
@@ -31,6 +27,9 @@
   --radius-medium: 16px;
   --radius-large: 22px;
   --radius-pill: 999px;
+
+  --top-bar-height: 49px;
+  --bottom-nav-space: 88px;
 
   --content-width: 680px;
   --page-padding-mobile: 16px;
@@ -41,7 +40,7 @@
 }
 
 html {
-  height: 100%;
+  height: 100dvh;
   width: 100%;
 
   @include mat.theme(
@@ -69,26 +68,10 @@ body {
   min-height: 100%;
   background-color: var(--color-background);
   background-image:
-    radial-gradient(
-      circle at 10% 20%,
-      rgba(255, 205, 210, 0.08),
-      transparent 15%
-    ),
-    radial-gradient(
-      circle at 90% 80%,
-      rgba(244, 143, 177, 0.06),
-      transparent 20%
-    ),
-    radial-gradient(
-      circle at 100% 0%,
-      rgba(255, 138, 128, 0.12),
-      transparent 30%
-    ),
-    linear-gradient(
-      135deg,
-      rgba(244, 143, 177, 0.12),
-      rgba(244, 67, 54, 0.08)
-    );
+    radial-gradient(circle at 10% 20%, rgba(255, 205, 210, 0.08), transparent 15%),
+    radial-gradient(circle at 90% 80%, rgba(244, 143, 177, 0.06), transparent 20%),
+    radial-gradient(circle at 100% 0%, rgba(255, 138, 128, 0.12), transparent 30%),
+    linear-gradient(135deg, rgba(244, 143, 177, 0.12), rgba(244, 67, 54, 0.08));
   background-attachment: fixed;
   background-size: cover;
   color: var(--color-text);
@@ -98,10 +81,86 @@ body {
 app-root {
   display: block;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* Wiederverwendbare Layout-Klassen */
+
+.ui-page-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 var(--page-padding-mobile) 36px;
+  color: var(--color-text);
+}
+
+.ui-page-root--spacious {
+  padding-top: 28px;
+}
+
+.ui-avatar {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--color-primary), var(--color-secondary));
+  box-shadow: 0 10px 24px rgba(124, 77, 255, 0.28);
+  color: var(--color-text);
+}
+
+.ui-avatar mat-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+}
+
+.ui-ranking-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-surface);
+  backdrop-filter: blur(16px) saturate(125%);
+}
+
+.ui-rank-badge {
+  display: grid;
+  place-items: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-medium);
+  background: linear-gradient(145deg, rgba(255, 107, 129, 0.9), rgba(124, 77, 255, 0.9));
+  color: var(--color-text);
+  font-size: 18px;
+  font-weight: 800;
+  box-shadow: 0 7px 16px rgba(124, 77, 255, 0.25);
+}
+
+.ui-rank-badge--small {
+  flex-basis: 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-small);
+  font-size: 13px;
+}
+
+.ui-rank-badge--large {
+  flex-basis: 48px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  font-size: 22px;
+}
 
 .ui-container {
   width: min(100%, var(--content-width));
@@ -191,7 +250,8 @@ button.mat-mdc-button-base:not(.mat-mdc-fab):not(.mat-mdc-mini-fab):not(.mat-mdc
   gap: 8px;
 }
 
-button.mat-mdc-button-base:not(.mat-mdc-fab):not(.mat-mdc-mini-fab):not(.mat-mdc-icon-button) > mat-icon {
+button.mat-mdc-button-base:not(.mat-mdc-fab):not(.mat-mdc-mini-fab):not(.mat-mdc-icon-button)
+  > mat-icon {
   order: 2;
   margin-right: 0;
   margin-left: 0px;
@@ -234,6 +294,15 @@ button.mat-mdc-button-base:not(.mat-mdc-fab):not(.mat-mdc-mini-fab):not(.mat-mdc
 @media (min-width: 600px) {
   .ui-container {
     padding-inline: var(--page-padding-desktop);
+  }
+
+  .ui-page-root {
+    padding-right: var(--page-padding-desktop);
+    padding-left: var(--page-padding-desktop);
+  }
+
+  .ui-page-root--spacious {
+    padding-top: 48px;
   }
 }
 

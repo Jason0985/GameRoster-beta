@@ -5,16 +5,15 @@
     <p>Das finale Ranking der Runde.</p>
   </header>
 
-  <mat-card
-    *ngFor="let player of players$ | async; let rank = index; trackBy: trackById">
-    <div class="ranking-card">
-    <div class="player-info">
-      <div class="rank-badge">{{ rank + 1 }}</div>
-      <div class="player-name">{{ player.name }}</div>
-    </div>
-    <div class="score">
-      <div class="player-score">{{ player.score }} <span>Pkt.</span></div>
-    </div>
+  <mat-card *ngFor="let player of players$ | async; let rank = index; trackBy: trackById">
+    <div class="ranking-card ui-ranking-card">
+      <div class="player-info">
+        <div class="rank-badge ui-rank-badge ui-rank-badge--large">{{ rank + 1 }}</div>
+        <div class="player-name">{{ player.name }}</div>
+      </div>
+      <div class="score">
+        <div class="player-score">{{ player.score }} <span>Pkt.</span></div>
+      </div>
     </div>
   </mat-card>
 

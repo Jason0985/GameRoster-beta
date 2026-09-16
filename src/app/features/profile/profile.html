@@ -1,49 +1,41 @@
-<div class="profile-root">
-    <header class="ui-hero profile-header">
-        <div class="profile-avatar" aria-hidden="true">
-            <mat-icon>person</mat-icon>
-        </div>
+<div class="profile-root ui-page-root ui-page-root--spacious">
+  <header class="ui-hero profile-header">
+    <div class="profile-avatar ui-avatar" aria-hidden="true">
+      <mat-icon>person</mat-icon>
+    </div>
 
-        <h1 class="ui-title">
-            Dein <span class="ui-accent">Profil</span> <mat-icon class="edit-icon">edit</mat-icon>
-        </h1>
+    <h1 class="ui-title">
+      Dein <span class="ui-accent">Profil</span> <mat-icon class="edit-icon">edit</mat-icon>
+    </h1>
 
-        <p class="ui-subtitle">
-            Verwalte deine persönlichen Einstellungen.
-        </p>
-    </header>
+    <p class="ui-subtitle">Verwalte deine persönlichen Einstellungen.</p>
+  </header>
 
-    <section class="profile-card ui-surface">
-        <div class="profile-card-heading">
-            <mat-icon aria-hidden="true">account_circle</mat-icon>
-            <div>
-                <h2>Noch nicht angemeldet?</h2>
-                <p>Speichere deine Spielerprofile und Spielstände.</p>
-            </div>
-        </div>
+  <section class="profile-card ui-surface">
+    <div class="profile-card-heading">
+      <mat-icon aria-hidden="true">account_circle</mat-icon>
+      <div>
+        <h2>Noch nicht angemeldet?</h2>
+        <p>Speichere deine Spielerprofile und Spielstände.</p>
+      </div>
+    </div>
 
-        <div class="profile-actions">
-            <button mat-flat-button color="primary" routerLink="/profile/auth">
-                Anmelden
-            </button>
+    <div class="profile-actions">
+      <button mat-flat-button color="primary" routerLink="/profile/auth">Anmelden</button>
 
-            <button mat-stroked-button routerLink="/profile/auth">
-                Registrieren
-            </button>
-        </div>
-    </section>
+      <button mat-stroked-button routerLink="/profile/auth">Registrieren</button>
+    </div>
+  </section>
 
-    <section class="profile-card ui-surface">
-        <div class="profile-card-heading">
-            <mat-icon aria-hidden="true">info</mat-icon>
-            <div>
-                <h2>Über GameRoster</h2>
-                <p>Dein digitales Scoreboard für Brettspiele.</p>
-            </div>
-        </div>
+  <section class="profile-card ui-surface">
+    <div class="profile-card-heading">
+      <mat-icon aria-hidden="true">info</mat-icon>
+      <div>
+        <h2>Über GameRoster</h2>
+        <p>Dein digitales Scoreboard für Brettspiele.</p>
+      </div>
+    </div>
 
-        <div class="version-tag">
-            Version 2.0
-        </div>
-    </section>
+    <div class="version-tag">Version 2.0</div>
+  </section>
 </div>

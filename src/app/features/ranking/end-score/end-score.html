@@ -1,13 +1,15 @@
 <div class="end-score-root">
   <header class="end-header">
     <h1 class="ui-title">End<span class="ui-accent">punktestand</span></h1>
-    <div class="ui-badge">Rundenanzahl {{ ((roundCount$ | async) ?? 0) }}</div>
+    <div class="ui-badge">Rundenanzahl {{ (roundCount$ | async) ?? 0 }}</div>
   </header>
 
-  <mat-card *ngFor="let player of players$ | async; let rank = index; trackBy: trackById"
-    class="ranking-card ui-surface">
+  <mat-card
+    *ngFor="let player of players$ | async; let rank = index; trackBy: trackById"
+    class="ranking-card ui-ranking-card"
+  >
     <div class="player-info">
-      <div class="rank-badge">{{ rank + 1 }}</div>
+      <div class="rank-badge ui-rank-badge">{{ rank + 1 }}</div>
       <div class="player-name">{{ player.name }}</div>
     </div>
     <div class="score">

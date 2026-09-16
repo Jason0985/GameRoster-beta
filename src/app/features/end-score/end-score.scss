@@ -3,7 +3,6 @@
   flex-direction: column;
   gap: 16px;
   width: min(100%, 680px);
-  min-height: 100dvh;
   box-sizing: border-box;
   margin: 0 auto;
   padding: 17px 16px 56px;
@@ -41,18 +40,9 @@
 }
 
 .ranking-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   gap: 16px;
   min-height: 92px;
-  box-sizing: border-box;
   padding: 16px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 18px 45px rgba(13, 5, 19, 0.22);
-  backdrop-filter: blur(16px) saturate(125%);
 }
 
 .player-info {
@@ -60,21 +50,6 @@
   align-items: center;
   gap: 16px;
   min-width: 0;
-}
-
-.rank-badge {
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  flex: 0 0 48px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 14px;
-  background: linear-gradient(145deg, rgba(255, 107, 129, 0.9), rgba(124, 77, 255, 0.9));
-  color: #fff;
-  font-size: 22px;
-  font-weight: 800;
-  box-shadow: 0 7px 16px rgba(124, 77, 255, 0.25);
 }
 
 .player-name {
