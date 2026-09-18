@@ -124,7 +124,43 @@ app-root {
   padding: 12px 14px;
 }
 
+.player-card-list {
+  display: flex;
+  width: min(100%, var(--content-width));
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-top: 14px;
+  overflow: hidden;
+  border-radius: var(--radius-large);
+}
+
+.player-card-list > mat-card.ui-player-card {
+  position: relative;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+  --mat-card-container-color: transparent;
+  --mat-card-container-elevation: none;
+  --mat-card-container-shape: 0;
+}
+
+.player-card-list > mat-card.ui-player-card::after {
+  position: absolute;
+  right: 14px;
+  bottom: 0;
+  left: 14px;
+  width: auto;
+  height: 0.3px;
+  background-color: #4a4a4a;
+  content: '';
+}
+
+.player-card-list > mat-card.ui-player-card:first-child::after {
+  display: none;
+}
+
 mat-card.ui-player-card {
+  display: flex;
   flex-direction: row;
 }
 
@@ -223,7 +259,6 @@ mat-card.ui-player-card {
 }
 
 .ui-surface {
-  border-radius: var(--radius-large);
   background-color: var(--color-surface);
   box-shadow: var(--shadow-surface);
   backdrop-filter: blur(16px) saturate(125%);

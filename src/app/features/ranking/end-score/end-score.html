@@ -4,19 +4,19 @@
     <div class="ui-badge">Rundenanzahl {{ (roundCount$ | async) ?? 0 }}</div>
   </header>
 
-  <mat-card
-    *ngFor="let player of players$ | async; let rank = index; trackBy: trackById"
-    class="ui-player-card ui-surface"
-  >
-    <div class="ui-player-info">
-      <div class="rank-badge ui-rank-badge">{{ rank + 1 }}</div>
-      <div class="ui-player-name">{{ player.name }}</div>
-    </div>
-    <div class="ui-player-score">
-      <span class="score-value">{{ player.score }}</span>
-      <span class="score-unit">Pkt.</span>
-    </div>
-  </mat-card>
+
+  <div class="player-card-list ui-surface">
+    <mat-card *ngFor="let player of players$ | async; let rank = index; trackBy: trackById" class="ui-player-card">
+      <div class="ui-player-info">
+        <div class="rank-badge ui-rank-badge">{{ rank + 1 }}</div>
+        <div class="ui-player-name">{{ player.name }}</div>
+      </div>
+      <div class="ui-player-score">
+        <span class="score-value">{{ player.score }}</span>
+        <span class="score-unit">Pkt.</span>
+      </div>
+    </mat-card>
+  </div>
 
   <button mat-flat-button color="warn" class="new-game-button" (click)="startNewGame()">
     <mat-icon>replay</mat-icon>
