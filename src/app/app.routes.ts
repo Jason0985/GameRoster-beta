@@ -4,10 +4,7 @@ import { rankingResumeGuard } from './features/ranking/ranking-resume-guard';
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () =>
-      import('./features/home/home').then(
-        (module) => module.Home
-      ),
+    loadComponent: () => import('./features/home/home').then((module) => module.Home),
   },
   {
     path: 'ranking',
@@ -18,36 +15,36 @@ export const routes: Routes = [
   {
     path: 'ranking/game',
     loadComponent: () =>
-      import('./features/ranking/scoreboard/scoreboard').then(
-        (module) => module.Scoreboard
-      ),
+      import('./features/ranking/scoreboard/scoreboard').then((module) => module.Scoreboard),
   },
   {
     path: 'ranking/end-score',
     loadComponent: () =>
-      import('./features/ranking/end-score/end-score').then(
-        (module) => module.EndScore
-      ),
+      import('./features/ranking/end-score/end-score').then((module) => module.EndScore),
   },
   {
     path: 'collection',
     loadComponent: () =>
-      import('./features/collection/collection').then(
-        (module) => module.Collection
+      import('./features/collection/collection').then((module) => module.Collection),
+  },
+  {
+    path: 'paddle-table',
+    loadComponent: () =>
+      import('./features/collection/paddle-table/paddle-table').then(
+        (module) => module.PaddleTable,
       ),
+  },
+  {
+    path: 'flip-7',
+    loadComponent: () =>
+      import('./features/collection/flip-7/flip-7').then((module) => module.Flip7),
   },
   {
     path: 'profile',
-    loadComponent: () =>
-      import('./features/profile/profile').then(
-        (module) => module.Profile
-      ),
+    loadComponent: () => import('./features/profile/profile').then((module) => module.Profile),
   },
   {
     path: 'profile/auth',
-    loadComponent: () =>
-      import('./features/auth/auth').then(
-        (module) => module.Auth
-      ),
+    loadComponent: () => import('./features/auth/auth').then((module) => module.Auth),
   },
 ];
