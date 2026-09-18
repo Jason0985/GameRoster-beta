@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
-import { GameService } from '../../../game.service';
+import { GameService } from '../game.service';
 import { Player as PlayerModel } from '../../../player.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -56,6 +56,7 @@ export class Scoreboard {
   endGame() {
     this.game.completeRound(this.roundScores);
     this.roundScores = {};
+    this.game.finishGame();
     this.router.navigate(['/ranking/end-score']);
   }
 

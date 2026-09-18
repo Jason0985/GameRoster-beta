@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { rankingResumeGuard } from './features/ranking/ranking-resume-guard';
 
 export const routes: Routes = [
   {
@@ -10,10 +11,9 @@ export const routes: Routes = [
   },
   {
     path: 'ranking',
+    canActivate: [rankingResumeGuard],
     loadComponent: () =>
-      import('./features/ranking/game-setup/game-setup').then(
-        (module) => module.GameSetup
-      ),
+      import('./features/ranking/game-setup/game-setup').then((m) => m.GameSetup),
   },
   {
     path: 'ranking/game',

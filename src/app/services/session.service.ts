@@ -1,35 +1,42 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { User } from '@supabase/supabase-js';
 import { supabase } from '../supabase.client';
+import { ProfileService } from './profile.service';
+import { Profile } from '../features/profile/profile.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SessionService {
-  // Der aktuell eingeloggte User (oder null)
-  private readonly currentUser = signal<User | null>(null);
+  private readonly profileService = inject(ProfileService);
 
-  // Nach außen nur lesbar
+  private readonly currentUser = signal<User | null>(null);
+  private readonly currentProfile = signal<Profile | null>(null);
+
   readonly user = this.currentUser.asReadonly();
+  readonly profile = this.currentProfile.asReadonly();
   readonly isLoggedIn = computed(() => this.currentUser() !== null);
 
-  // Bequeme Zugriffe auf die Metadaten aus der Registrierung
   readonly displayName = computed(
-    () => this.currentUser()?.user_metadata?.['display_name'] ?? ''
+    () => this.currentProfile()?.display_name ?? this.currentProfile()?.username ?? ''
   );
-  readonly username = computed(
-    () => this.currentUser()?.user_metadata?.['username'] ?? ''
-  );
+  readonly username = computed(() => this.currentProfile()?.username ?? '');
 
   constructor() {
-    // Beim Start die vorhandene Session laden (z. B. nach Reload)
     supabase.auth.getSession().then(({ data }) => {
-      this.currentUser.set(data.session?.user ?? null);
+      this.setUser(data.session?.user ?? null);
     });
 
-    // Auf Login/Logout reagieren
     supabase.auth.onAuthStateChange((_event, session) => {
-      this.currentUser.set(session?.user ?? null);
+      this.setUser(session?.user ?? null);
     });
+  }
+
+  // User setzen und passendes Profil aus der Tabelle nachladen
+  private async setUser(user: User | null): Promise<void> {
+    this.currentUser.set(user);
+    this.currentProfile.set(
+      user ? await this.profileService.getProfile(user.id) : null
+    );
   }
 }
