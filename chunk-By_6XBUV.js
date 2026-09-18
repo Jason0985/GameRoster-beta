@@ -1,0 +1,1 @@
+import{K as PE,Rn as pc,en as fc,l as CI}from"./chunk-MGMpXSGR.js";var a=class t{static ɵfac=function(e){return new(e||t)};static ɵcmp=CI({type:t,selectors:[[`app-flip-7`]],decls:2,vars:0,template:function(e,s){e&1&&(fc(0,`p`),PE(1,`flip-7 works!`),pc())},encapsulation:2})};export{a as Flip7};
