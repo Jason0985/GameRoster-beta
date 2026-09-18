@@ -266,6 +266,19 @@ mat-card.ui-player-card {
   backdrop-filter: blur(16px) saturate(125%);
 }
 
+.cdk-overlay-backdrop {
+  background-color: rgba(12, 12, 12, 0.42);
+  backdrop-filter: blur(7px) saturate(110%);
+  -webkit-backdrop-filter: blur(7px) saturate(110%);
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: var(--radius-large);
+  background: rgba(58, 58, 58, 0.96);
+  box-shadow: 0 24px 70px rgba(7, 7, 7, 0.42);
+  color: var(--color-text);
+}
+
 mat-card.ui-surface {
   --mat-card-container-color: var(--color-surface);
   --mat-card-container-shape: var(--radius-large);
