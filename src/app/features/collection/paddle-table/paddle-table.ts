@@ -3,12 +3,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { RouterLink } from '@angular/router';
+import { ConfirmationDialog } from '../../../confirmation-dialog';
 import { PaddleAddPlayerDialog } from './paddle-add-player-dialog';
 import { PaddleService } from './paddle.service';
 
 @Component({
   selector: 'app-paddle-table',
-  imports: [MatButtonModule, MatCardModule, MatDialogModule, MatIconModule],
+  imports: [
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatIconModule,
+    MatTooltipModule,
+    RouterLink,
+  ],
   templateUrl: './paddle-table.html',
   styleUrl: './paddle-table.scss',
 })
@@ -41,6 +51,20 @@ export class PaddleTable {
   }
 
   endGame(): void {
-    this.paddle.endGame();
+    this.dialog
+      .open(ConfirmationDialog, {
+        data: {
+          title: 'Paddle-Spiel beenden?',
+          message: 'Alle Spielstände werden gelöscht und können nicht wiederhergestellt werden.',
+          confirmLabel: 'Spiel beenden',
+          icon: 'warning',
+        },
+      })
+      .afterClosed()
+      .subscribe((confirmed: boolean | undefined) => {
+        if (confirmed) {
+          this.paddle.endGame();
+        }
+      });
   }
 }

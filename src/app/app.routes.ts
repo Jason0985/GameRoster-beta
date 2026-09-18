@@ -28,14 +28,14 @@ export const routes: Routes = [
       import('./features/collection/collection').then((module) => module.Collection),
   },
   {
-    path: 'paddle-table',
+    path: 'collection/paddle-table',
     loadComponent: () =>
       import('./features/collection/paddle-table/paddle-table').then(
         (module) => module.PaddleTable,
       ),
   },
   {
-    path: 'flip-7',
+    path: 'collection/flip-7',
     loadComponent: () =>
       import('./features/collection/flip-7/flip-7').then((module) => module.Flip7),
   },

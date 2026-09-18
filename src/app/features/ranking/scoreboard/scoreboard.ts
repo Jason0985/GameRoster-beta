@@ -6,7 +6,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ConfirmationDialog } from '../../../confirmation-dialog';
 import { GameService } from '../game.service';
 import { Player as PlayerModel } from '../../../player.model';
 import { Observable } from 'rxjs';
@@ -21,6 +23,7 @@ import { map } from 'rxjs/operators';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatDialogModule,
     MatIconModule,
     MatCardModule,
   ],
@@ -31,15 +34,16 @@ export class Scoreboard {
   hasCompletedRound = false;
   roundScores: Record<string, number | null> = {};
   players$: Observable<PlayerModel[]>;
-  roundCount$: Observable<number>
-  
+  roundCount$: Observable<number>;
+
   constructor(
     private game: GameService,
     private router: Router,
+    private dialog: MatDialog,
   ) {
     this.roundCount$ = this.game.roundCount$;
     this.players$ = this.game.players$.pipe(
-      map((players) => players.slice().sort((a, b) => b.score - a.score))
+      map((players) => players.slice().sort((a, b) => b.score - a.score)),
     );
   }
 
@@ -54,10 +58,25 @@ export class Scoreboard {
   }
 
   endGame() {
-    this.game.completeRound(this.roundScores);
-    this.roundScores = {};
-    this.game.finishGame();
-    this.router.navigate(['/ranking/end-score']);
+    this.dialog
+      .open(ConfirmationDialog, {
+        data: {
+          title: 'Ranking-Spiel beenden?',
+          message:
+            'Danach können keine weiteren Punkte eingetragen werden. Es werden nur noch die Endstände in einer Übersicht angezeigt.',
+          confirmLabel: 'Endstände anzeigen',
+          icon: 'flag',
+        },
+      })
+      .afterClosed()
+      .subscribe((confirmed: boolean | undefined) => {
+        if (!confirmed) return;
+
+        this.game.completeRound(this.roundScores);
+        this.roundScores = {};
+        this.game.finishGame();
+        this.router.navigate(['/ranking/end-score']);
+      });
   }
 
   trackById(_: number, p: PlayerModel) {

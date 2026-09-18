@@ -25,14 +25,14 @@ export class Collection {
       category: 'Kartenspiel',
       description: 'Risiko eingehen, Karten aufdecken und Punkte sammeln.',
       icon: 'casino',
-      path: '/flip-7',
+      path: '/collection/flip-7',
     },
     {
       title: 'Paddle Tabelle',
       category: 'Paddle Übersicht',
       description: 'Übersicht über Gewinne und Verluste',
       icon: 'sports_tennis',
-      path: '/paddle-table',
+      path: '/collection/paddle-table',
     },
   ];
 
