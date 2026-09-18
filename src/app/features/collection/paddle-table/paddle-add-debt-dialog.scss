@@ -1,0 +1,74 @@
+:host {
+  display: block;
+  min-width: min(100%, 520px);
+}
+
+h2[mat-dialog-title] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h2 mat-icon {
+  color: var(--color-primary-light);
+}
+
+.dialog-intro {
+  margin: 0 0 18px;
+  color: var(--color-text-muted);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.team-field {
+  width: 100%;
+}
+
+.team-field--winners {
+  --mdc-outlined-text-field-focus-outline-color: #9ff0bb;
+}
+
+.team-field--losers {
+  --mdc-outlined-text-field-focus-outline-color: var(--color-danger-light);
+}
+
+.versus {
+  color: var(--color-text-subtle);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.entry-hint {
+  margin: 16px 0 0;
+  color: var(--color-text-subtle);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.entry-hint--invalid {
+  color: var(--color-danger-light);
+}
+
+[mat-dialog-actions] {
+  gap: 8px;
+}
+
+@media (max-width: 520px) {
+  :host {
+    min-width: 0;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .versus {
+    justify-self: center;
+  }
+}

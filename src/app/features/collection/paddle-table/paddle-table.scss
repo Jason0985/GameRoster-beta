@@ -70,8 +70,18 @@
   margin-bottom: 10px;
 }
 
-.section-heading > mat-icon {
+.section-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.section-actions > mat-icon {
   color: var(--color-primary-light);
+}
+
+.section-actions button {
+  color: var(--color-text-muted);
 }
 
 .section-kicker {
@@ -88,17 +98,44 @@
 }
 
 .paddle-player-card {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas:
-    'info result'
-    'actions actions';
-  align-items: center;
-  gap: 12px 10px;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.paddle-player-card .ui-player-info {
-  grid-area: info;
+.paddle-player-card:last-child {
+  border-bottom: 0;
+}
+
+.player-summary {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 78px;
+  box-sizing: border-box;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.player-summary:hover,
+.player-summary:focus-visible {
+  background: rgba(255, 255, 255, 0.05);
+  outline: none;
+}
+
+.player-summary .ui-rank-badge {
+  flex: 0 0 40px;
+}
+
+.player-details {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
 }
 
 .player-record {
@@ -108,7 +145,6 @@
 }
 
 .player-result {
-  grid-area: result;
   color: #9ff0bb;
   font-size: 18px;
   font-weight: 700;
@@ -119,30 +155,83 @@
   color: var(--color-danger-light);
 }
 
-.player-actions {
+.player-chevron {
+  flex: 0 0 auto;
+  color: var(--color-text-subtle);
+  transition:
+    transform var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.paddle-player-card--expanded .player-chevron {
+  transform: rotate(90deg);
+  color: var(--color-primary-light);
+}
+
+.debt-details {
+  margin: 0 14px 14px 66px;
+  padding: 12px;
+  border-radius: var(--radius-small);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.debt-group + .debt-group {
+  margin-top: 12px;
+}
+
+.debt-group-title {
+  margin: 0 0 5px;
+  color: var(--color-text-subtle);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.debt-group--receive .debt-group-title {
+  color: #9ff0bb;
+}
+
+.debt-row,
+.debt-total {
   display: flex;
-  grid-area: actions;
-  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--color-text-muted);
+  font-size: 13px;
 }
 
-.player-actions button {
-  min-height: 38px;
-  flex: 1;
+.debt-row strong {
+  color: var(--color-danger-light);
+  font-weight: 600;
 }
 
-.win-button {
-  color: #9ff0bb !important;
-  border-color: rgba(159, 240, 187, 0.5) !important;
+.debt-group--receive .debt-row strong {
+  color: #9ff0bb;
 }
 
-.loss-button {
-  color: var(--color-danger-light) !important;
-  border-color: rgba(255, 138, 128, 0.5) !important;
+.debt-total {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--color-text);
+  font-weight: 700;
 }
 
-.player-actions mat-icon,
+.debt-total strong {
+  color: var(--color-danger-light);
+}
+
+.no-debts {
+  margin: 0;
+  color: var(--color-text-subtle);
+  font-size: 12px;
+}
+
 .end-game-button mat-icon,
-.add-player-button mat-icon {
+.add-player-button mat-icon,
+.add-debt-button mat-icon {
   width: 18px;
   height: 18px;
   font-size: 18px;
@@ -181,6 +270,11 @@
 }
 
 .add-player-button {
+  align-self: stretch;
+  margin-top: 24px;
+}
+
+.add-debt-button {
   align-self: stretch;
   margin-top: 24px;
 }

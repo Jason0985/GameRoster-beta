@@ -5,3 +5,9 @@ export interface PaddlePlayer {
   losses: number;
   balance: number;
 }
+
+export interface PaddleDebtEntry {
+  id: string;
+  winnerIds: string[];
+  loserIds: string[];
+}

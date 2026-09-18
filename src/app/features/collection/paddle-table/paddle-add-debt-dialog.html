@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>
+  <mat-icon aria-hidden="true">swap_horiz</mat-icon>
+  Spiel eintragen
+</h2>
+
+<mat-dialog-content>
+  <p class="dialog-intro">Wer hat gewonnen und wer schuldet den Einsatz?</p>
+
+  <div class="team-grid">
+    <mat-form-field appearance="outline" class="team-field team-field--winners">
+      <mat-label>Gewinner</mat-label>
+      <mat-select [(ngModel)]="winners" multiple [disableRipple]="true">
+        @for (player of players(); track player.id) {
+          <mat-option [value]="player.id" [disabled]="isOptionDisabled(player.id, 'winner')">
+            {{ player.name }}
+          </mat-option>
+        }
+      </mat-select>
+      <mat-hint>Mindestens eine Person</mat-hint>
+    </mat-form-field>
+
+    <div class="versus" aria-hidden="true">vs.</div>
+
+    <mat-form-field appearance="outline" class="team-field team-field--losers">
+      <mat-label>Verlierer</mat-label>
+      <mat-select [(ngModel)]="losers" multiple [disableRipple]="true">
+        @for (player of players(); track player.id) {
+          <mat-option [value]="player.id" [disabled]="isOptionDisabled(player.id, 'loser')">
+            {{ player.name }}
+          </mat-option>
+        }
+      </mat-select>
+      <mat-hint>Mindestens eine Person</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <p class="entry-hint" [class.entry-hint--invalid]="!isValid">
+    {{ participantCount }}/4 Spieler ausgewählt · Jeder Verlierer schuldet jedem Gewinner
+    {{ paddle.winValue | number: '1.2-2' }} €.
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="cancel()">Abbrechen</button>
+  <button mat-flat-button color="primary" type="button" [disabled]="!isValid" (click)="add()">
+    Eintrag speichern
+  </button>
+</mat-dialog-actions>
