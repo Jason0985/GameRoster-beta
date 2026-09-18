@@ -3,10 +3,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
+  selector: 'app-settings',
   imports: [MatIconModule, RouterLink],
-  templateUrl: './home.html',
-  styleUrl: './home.scss',
+  templateUrl: './settings.html',
+  styleUrl: './settings.scss',
 })
-export class Home {}
+export class Settings {}

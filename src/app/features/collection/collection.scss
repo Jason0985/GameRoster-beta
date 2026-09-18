@@ -60,6 +60,29 @@
   min-height: 76px;
   box-sizing: border-box;
   padding: 12px 14px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .game-card:hover {
+    background-color: #353535;
+    box-shadow: 0 20px 48px rgba(13, 5, 19, 0.28);
+    transform: translateY(-2px);
+  }
+}
+
+.game-card:active {
+  transform: scale(0.98);
+}
+
+.game-card:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
 }
 
 .game-icon {

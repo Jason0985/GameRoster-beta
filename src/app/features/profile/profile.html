@@ -1,54 +1,159 @@
 <div class="profile-root ui-page-root ui-page-root--spacious">
-  <header class="ui-hero profile-header">
-    <div class="profile-avatar ui-avatar" aria-hidden="true">
-      <mat-icon>person</mat-icon>
+  <header class="ui-hero profile-header ui-surface">
+    <div class="profile-header-inner">
+      <div class="profile-header-mark" aria-hidden="true">
+        <mat-icon>person</mat-icon>
+      </div>
+      <div class="profile-header-copy">
+        @if (session.isLoggedIn()) {
+          <p class="profile-kicker">Dein Profil</p>
+          <div class="profile-identity">
+            <h1 class="ui-title">{{ session.displayName() }}</h1>
+            <span class="profile-username">&#64;{{ session.username() }}</span>
+          </div>
+        } @else {
+          <p class="profile-kicker">Willkommen</p>
+          <h1 class="ui-title">Dein <span class="ui-accent">Profil</span></h1>
+          <p class="ui-subtitle">Verwalte deine persönlichen Einstellungen.</p>
+        }
+      </div>
     </div>
-
-    @if (session.isLoggedIn()) {
-    <h1 class="ui-title">
-      {{ session.displayName() }}
-      <!-- <mat-icon class="edit-icon">edit</mat-icon> -->
-    </h1>
-    <p class="ui-subtitle">&#64;{{ session.username() }}</p>
-    } @else {
-    <h1 class="ui-title">
-      Dein <span class="ui-accent">Profil</span>
-    </h1>
-    <p class="ui-subtitle">Verwalte deine persönlichen Einstellungen.</p>
-    }
   </header>
 
-  @if (session.isLoggedIn()) {
-  <section class="profile-card ui-surface">
-    <div class="profile-actions">
-      <button mat-stroked-button (click)="logout()">Abmelden</button>
-    </div>
-  </section>
-  } @else {
-  <section class="profile-card ui-surface">
-    <div class="profile-card-heading">
-      <mat-icon aria-hidden="true">account_circle</mat-icon>
-      <div>
-        <h2>Noch nicht angemeldet?</h2>
-        <p>Speichere deine Spielerprofile und Spielstände.</p>
+  @if (!session.isLoggedIn()) {
+    <section class="profile-card ui-surface">
+      <div class="profile-card-heading">
+        <mat-icon aria-hidden="true">account_circle</mat-icon>
+        <div>
+          <h2>Noch nicht angemeldet?</h2>
+          <p>Speichere deine Spielerprofile und Spielstände.</p>
+        </div>
       </div>
-    </div>
-    <div class="profile-actions">
-      <button mat-flat-button color="primary" routerLink="/profile/auth">Anmelden</button>
-      <button mat-stroked-button routerLink="/profile/auth">Registrieren</button>
-    </div>
-  </section>
+      <div class="profile-actions">
+        <button mat-flat-button color="primary" routerLink="/profile/auth">Anmelden</button>
+        <button mat-stroked-button routerLink="/profile/auth">Registrieren</button>
+      </div>
+    </section>
   }
 
-  <section class="profile-card ui-surface">
-    <div class="profile-card-heading">
-      <mat-icon aria-hidden="true">info</mat-icon>
-      <div>
-        <h2>Über GameRoster</h2>
-        <p>Dein digitales Scoreboard für Brettspiele.</p>
+  @if (session.isLoggedIn()) {
+    <section class="profile-card profile-overview-card ui-surface" aria-labelledby="overview-title">
+      <div class="profile-card-heading">
+        <mat-icon aria-hidden="true">insights</mat-icon>
+        <div>
+          <h2 id="overview-title">Deine Spielübersicht</h2>
+          <p>Deine bisherigen GameRoster-Momente auf einen Blick.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="version-tag">Version 3.0</div>
-  </section>
+      <div class="profile-stat-grid">
+        <div class="profile-stat">
+          <strong>12</strong>
+          <span>Spieleabende</span>
+        </div>
+        <div class="profile-stat">
+          <strong>3</strong>
+          <span>Spiele aktiv</span>
+        </div>
+        <div class="profile-stat">
+          <strong>8</strong>
+          <span>Freunde</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-card activity-card ui-surface" aria-labelledby="activity-title">
+      <div class="profile-card-heading">
+        <mat-icon aria-hidden="true">history</mat-icon>
+        <div>
+          <h2 id="activity-title">Letzte Aktivitäten</h2>
+          <p>Ein kleiner Rückblick auf deine letzten Runden.</p>
+        </div>
+      </div>
+
+      <div class="activity-list">
+        <div class="activity-row">
+          <span class="activity-icon" aria-hidden="true"><mat-icon>sports_tennis</mat-icon></span>
+          <div class="activity-copy">
+            <strong>Paddle Tabelle aktualisiert</strong>
+            <span>Gestern · 4 Spieler</span>
+          </div>
+          <mat-icon class="activity-arrow" aria-hidden="true">chevron_right</mat-icon>
+        </div>
+        <div class="activity-row">
+          <span class="activity-icon" aria-hidden="true"><mat-icon>casino</mat-icon></span>
+          <div class="activity-copy">
+            <strong>Flip 7 gespielt</strong>
+            <span>Vor 3 Tagen · Neue Runde</span>
+          </div>
+          <mat-icon class="activity-arrow" aria-hidden="true">chevron_right</mat-icon>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-card friends-card ui-surface">
+      <div class="profile-card-heading">
+        <mat-icon aria-hidden="true">group_add</mat-icon>
+        <div>
+          <h2>Freunde finden</h2>
+          <p>Suche nach dem Benutzernamen und füge neue Freunde hinzu.</p>
+        </div>
+      </div>
+
+      <label class="friend-search">
+        <mat-icon aria-hidden="true">search</mat-icon>
+        <input
+          type="search"
+          placeholder="Benutzernamen suchen"
+          [value]="friendSearch()"
+          (input)="searchFriends($event)"
+          aria-label="Freunde nach Benutzernamen suchen"
+        />
+      </label>
+
+      <div class="friend-results" aria-live="polite">
+        @if (friendSearchLoading()) {
+          <p class="friend-result-message">Suche läuft ...</p>
+        } @else if (friendSearch().length < 2) {
+          <p class="friend-result-message">Mindestens 2 Zeichen eingeben.</p>
+        } @else if (!friendResults().length) {
+          <p class="friend-result-message">Keine Benutzer gefunden.</p>
+        } @else {
+          @for (friend of friendResults(); track friend.id) {
+            <div class="friend-result">
+              <div class="friend-result-details">
+                <strong>{{ friend.display_name || friend.username }}</strong>
+                <span>&#64;{{ friend.username }}</span>
+              </div>
+              <button
+                mat-icon-button
+                type="button"
+                [disabled]="addedFriendIds().has(friend.id)"
+                [attr.aria-label]="
+                  addedFriendIds().has(friend.id) ? 'Anfrage gesendet' : 'Freund hinzufügen'
+                "
+                [matTooltip]="
+                  addedFriendIds().has(friend.id) ? 'Anfrage gesendet' : 'Freund hinzufügen'
+                "
+                (click)="addFriend(friend.id)"
+              >
+                <mat-icon aria-hidden="true">
+                  {{ addedFriendIds().has(friend.id) ? 'check' : 'person_add' }}
+                </mat-icon>
+              </button>
+            </div>
+          }
+        }
+      </div>
+    </section>
+  }
+
+  @if (session.isLoggedIn()) {
+    <button mat-flat-button class="profile-logout-button" type="button" (click)="logout()">
+      <mat-icon aria-hidden="true">logout</mat-icon>
+      Abmelden
+    </button>
+  }
+
+  <footer class="profile-footer">&#169; 2026 GameRoster</footer>
 </div>

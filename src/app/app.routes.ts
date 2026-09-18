@@ -47,4 +47,13 @@ export const routes: Routes = [
     path: 'profile/auth',
     loadComponent: () => import('./features/auth/auth').then((module) => module.Auth),
   },
+  {
+    path: 'settings',
+    loadComponent: () => import('./features/settings/settings').then((module) => module.Settings),
+  },
+  {
+    path: 'notifications',
+    loadComponent: () =>
+      import('./features/notifications/notifications').then((module) => module.Notifications),
+  },
 ];

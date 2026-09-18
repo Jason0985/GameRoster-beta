@@ -270,11 +270,15 @@
 }
 
 .add-player-button {
-  align-self: stretch;
+  align-self: center;
+  width: 400px;
+  box-sizing: border-box;
   margin-top: 24px;
 }
 
 .add-debt-button {
-  align-self: stretch;
+  align-self: center;
+  width: 400px;
+  box-sizing: border-box;
   margin-top: 24px;
 }

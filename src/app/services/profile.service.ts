@@ -7,11 +7,7 @@ import { Profile } from '../features/profile/profile.model';
 })
 export class ProfileService {
   async getProfile(userId: string): Promise<Profile | null> {
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single();
+    const { data, error } = await supabase.from('profiles').select('*').eq('id', userId).single();
 
     return error ? null : (data as Profile);
   }
@@ -27,10 +23,19 @@ export class ProfileService {
     return error ? null : (data as Profile | null);
   }
 
-  async updateDisplayName(userId: string, displayName: string) {
-    return supabase
+  async searchProfiles(searchTerm: string, currentUserId: string): Promise<Profile[]> {
+    const { data, error } = await supabase
       .from('profiles')
-      .update({ display_name: displayName })
-      .eq('id', userId);
+      .select('*')
+      .ilike('username', `%${searchTerm}%`)
+      .neq('id', currentUserId)
+      .order('username')
+      .limit(8);
+
+    return error ? [] : (data as Profile[]);
+  }
+
+  async updateDisplayName(userId: string, displayName: string) {
+    return supabase.from('profiles').update({ display_name: displayName }).eq('id', userId);
   }
 }
