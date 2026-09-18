@@ -1,14 +1,14 @@
 {
-  "name": "Board Game Scoreboard",
-  "short_name": "Scoreboard",
+  "name": "Game Center Beta",
+  "short_name": "Game Center",
   "theme_color": "#000000",
   "background_color": "#fafafa",
   "display": "standalone",
-  "id": "/GameRoster-beta/",
-  "scope": "/GameRoster-beta/",
-  "start_url": "/GameRoster-beta/",
+  "id": "/game-center-beta/",
+  "scope": "/game-center-beta/",
+  "start_url": "/game-center-beta/",
   "apple-mobile-web-app-capable": "yes",
-  "apple-mobile-web-app-title": "Scoreboard",
+  "apple-mobile-web-app-title": "Game Center",
   "apple-mobile-web-app-status-bar-style": "default",
   "icons": [
     {
