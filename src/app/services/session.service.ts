@@ -13,6 +13,9 @@ export class SessionService {
   private readonly currentUser = signal<User | null>(null);
   private readonly currentProfile = signal<Profile | null>(null);
 
+  private readonly sessionInitialized = signal(false);
+  readonly initialized = this.sessionInitialized.asReadonly();
+
   readonly user = this.currentUser.asReadonly();
   readonly profile = this.currentProfile.asReadonly();
   readonly isLoggedIn = computed(() => this.currentUser() !== null);
@@ -24,12 +27,13 @@ export class SessionService {
 
   constructor() {
     supabase.auth.getSession().then(({ data }) => {
-      this.setUser(data.session?.user ?? null);
-    });
+        this.setUser(data.session?.user ?? null);
+        this.sessionInitialized.set(true); // erste Prüfung abgeschlossen
+      });
 
-    supabase.auth.onAuthStateChange((_event, session) => {
-      this.setUser(session?.user ?? null);
-    });
+      supabase.auth.onAuthStateChange((_event, session) => {
+        this.setUser(session?.user ?? null);
+      });
   }
 
   // User setzen und passendes Profil aus der Tabelle nachladen

@@ -30,6 +30,8 @@ export class GameService {
   constructor() {
     // Auf Login/Logout reagieren: eingeloggt -> DB, sonst -> localStorage
     effect(() => {
+      if (!this.session.initialized()) return; // warten auf erste Session-Prüfung
+
       const user = this.session.user();
       if (user) {
         this.loadFromDb(user.id);
