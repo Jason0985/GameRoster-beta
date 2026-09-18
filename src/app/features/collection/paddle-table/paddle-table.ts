@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 import { ConfirmationDialog } from '../../../confirmation-dialog';
 import { PaddleAddPlayerDialog } from './paddle-add-player-dialog';
 import { PaddleAddDebtDialog, PaddleDebtSelection } from './paddle-add-debt-dialog';
+import { PaddleSetValueDialog } from './paddle-set-value-dialog';
 import { PaddlePlayer } from './paddle-player.model';
 import { PaddleService } from './paddle.service';
 
@@ -43,18 +44,20 @@ export class PaddleTable {
       const owedBy = new Map<string, number>();
 
       for (const entry of this.paddle.debtEntries()) {
+        const rounds = entry.rounds ?? 1;
+        const winValue = entry.winValue ?? this.paddle.defaultWinValue;
         const isWinner = entry.winnerIds.includes(player.id);
         const isLoser = entry.loserIds.includes(player.id);
 
         if (isWinner) {
           for (const loserId of entry.loserIds) {
-            owedBy.set(loserId, (owedBy.get(loserId) ?? 0) + this.paddle.winValue);
+            owedBy.set(loserId, (owedBy.get(loserId) ?? 0) + winValue * rounds);
           }
         }
 
         if (isLoser) {
           for (const winnerId of entry.winnerIds) {
-            owedTo.set(winnerId, (owedTo.get(winnerId) ?? 0) + this.paddle.winValue);
+            owedTo.set(winnerId, (owedTo.get(winnerId) ?? 0) + winValue * rounds);
           }
         }
       }
@@ -120,13 +123,24 @@ export class PaddleTable {
     this.expandedPlayerIds.set(new Set());
   }
 
+  openSetValueDialog(): void {
+    this.dialog
+      .open(PaddleSetValueDialog)
+      .afterClosed()
+      .subscribe((value: number | undefined) => {
+        if (value !== undefined) {
+          this.paddle.setWinValue(value);
+        }
+      });
+  }
+
   openAddDebtDialog(): void {
     this.dialog
       .open(PaddleAddDebtDialog)
       .afterClosed()
       .subscribe((selection: PaddleDebtSelection | undefined) => {
         if (selection) {
-          this.paddle.addDebtEntry(selection.winnerIds, selection.loserIds);
+          this.paddle.addDebtEntry(selection.winnerIds, selection.loserIds, selection.rounds);
         }
       });
   }

@@ -6,11 +6,13 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSliderModule } from '@angular/material/slider';
 import { PaddleService } from './paddle.service';
 
 export interface PaddleDebtSelection {
   winnerIds: string[];
   loserIds: string[];
+  rounds: number;
 }
 
 @Component({
@@ -23,6 +25,7 @@ export interface PaddleDebtSelection {
     MatFormFieldModule,
     MatIconModule,
     MatSelectModule,
+    MatSliderModule,
   ],
   templateUrl: './paddle-add-debt-dialog.html',
   styleUrl: './paddle-add-debt-dialog.scss',
@@ -33,13 +36,27 @@ export class PaddleAddDebtDialog {
   readonly players = computed(() => this.paddle.players());
   winners: string[] = [];
   losers: string[] = [];
+  rounds = 1;
 
   get participantCount(): number {
     return this.winners.length + this.losers.length;
   }
 
   get isValid(): boolean {
-    return this.winners.length > 0 && this.losers.length > 0 && this.participantCount >= 2;
+    return (
+      this.winners.length > 0 &&
+      this.losers.length > 0 &&
+      this.participantCount >= 2 &&
+      Number.isInteger(this.rounds) &&
+      this.rounds >= 1
+    );
+  }
+
+  selectedPlayerNames(playerIds: string[]): string {
+    return playerIds
+      .map((playerId) => this.players().find((player) => player.id === playerId)?.name)
+      .filter((name): name is string => !!name)
+      .join(', ');
   }
 
   isOptionDisabled(playerId: string, team: 'winner' | 'loser'): boolean {
@@ -61,6 +78,7 @@ export class PaddleAddDebtDialog {
       this.dialogRef.close({
         winnerIds: this.winners,
         loserIds: this.losers,
+        rounds: this.rounds,
       } satisfies PaddleDebtSelection);
     }
   }

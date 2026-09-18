@@ -10,4 +10,6 @@ export interface PaddleDebtEntry {
   id: string;
   winnerIds: string[];
   loserIds: string[];
+  rounds?: number;
+  winValue?: number;
 }

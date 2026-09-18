@@ -1,43 +1,81 @@
-<h2 mat-dialog-title>
-  <mat-icon aria-hidden="true">swap_horiz</mat-icon>
-  Spiel eintragen
+<h2 mat-dialog-title class="dialog-title">
+  <span class="dialog-title-icon" aria-hidden="true">
+    <mat-icon>swap_horiz</mat-icon>
+  </span>
+  <span>
+    <span class="dialog-kicker">Paddle</span>
+    <span class="dialog-title-text">Spiel eintragen</span>
+  </span>
 </h2>
 
 <mat-dialog-content>
-  <p class="dialog-intro">Wer hat gewonnen und wer schuldet den Einsatz?</p>
+  <p class="dialog-intro">Teams auswählen und Ergebnis festhalten.</p>
 
   <div class="team-grid">
-    <mat-form-field appearance="outline" class="team-field team-field--winners">
-      <mat-label>Gewinner</mat-label>
-      <mat-select [(ngModel)]="winners" multiple [disableRipple]="true">
-        @for (player of players(); track player.id) {
-          <mat-option [value]="player.id" [disabled]="isOptionDisabled(player.id, 'winner')">
-            {{ player.name }}
-          </mat-option>
-        }
-      </mat-select>
-      <mat-hint>Mindestens eine Person</mat-hint>
-    </mat-form-field>
+    <section class="team-card team-card--winners">
+      <div class="team-card-heading">
+        <span class="team-indicator" aria-hidden="true"><mat-icon>emoji_events</mat-icon></span>
+        <span>
+          <span class="team-label">Gewinner</span>
+          <span class="team-count">{{ winners.length }} ausgewählt</span>
+        </span>
+      </div>
+      <mat-form-field appearance="outline" class="team-field">
+        <mat-label>Spieler auswählen</mat-label>
+        <mat-select [(ngModel)]="winners" multiple [disableRipple]="true">
+          <mat-select-trigger>
+            <span class="selected-names">{{ selectedPlayerNames(winners) || 'Noch niemand' }}</span>
+          </mat-select-trigger>
+          @for (player of players(); track player.id) {
+            <mat-option [value]="player.id" [disabled]="isOptionDisabled(player.id, 'winner')">
+              {{ player.name }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </section>
 
     <div class="versus" aria-hidden="true">vs.</div>
 
-    <mat-form-field appearance="outline" class="team-field team-field--losers">
-      <mat-label>Verlierer</mat-label>
-      <mat-select [(ngModel)]="losers" multiple [disableRipple]="true">
-        @for (player of players(); track player.id) {
-          <mat-option [value]="player.id" [disabled]="isOptionDisabled(player.id, 'loser')">
-            {{ player.name }}
-          </mat-option>
-        }
-      </mat-select>
-      <mat-hint>Mindestens eine Person</mat-hint>
-    </mat-form-field>
+    <section class="team-card team-card--losers">
+      <div class="team-card-heading">
+        <span class="team-indicator" aria-hidden="true"><mat-icon>flag</mat-icon></span>
+        <span>
+          <span class="team-label">Verlierer</span>
+          <span class="team-count">{{ losers.length }} ausgewählt</span>
+        </span>
+      </div>
+      <mat-form-field appearance="outline" class="team-field">
+        <mat-label>Spieler auswählen</mat-label>
+        <mat-select [(ngModel)]="losers" multiple [disableRipple]="true">
+          <mat-select-trigger>
+            <span class="selected-names">{{ selectedPlayerNames(losers) || 'Noch niemand' }}</span>
+          </mat-select-trigger>
+          @for (player of players(); track player.id) {
+            <mat-option [value]="player.id" [disabled]="isOptionDisabled(player.id, 'loser')">
+              {{ player.name }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </section>
   </div>
 
-  <p class="entry-hint" [class.entry-hint--invalid]="!isValid">
-    {{ participantCount }}/4 Spieler ausgewählt · Jeder Verlierer schuldet jedem Gewinner
-    {{ paddle.winValue | number: '1.2-2' }} €.
-  </p>
+  <div class="rounds-control">
+    <div class="rounds-heading">
+      <span>
+        <span class="rounds-label">Anzahl gleicher Spiele</span>
+        <span class="rounds-hint">Mit den Pfeiltasten feinjustieren</span>
+      </span>
+    </div>
+    <div class="rounds-slider-line">
+      <mat-icon aria-hidden="true">looks_one</mat-icon>
+      <mat-slider min="1" max="15" step="1" showTickMarks discrete>
+        <input matSliderThumb [(ngModel)]="rounds" aria-label="Anzahl gleicher Spiele" />
+      </mat-slider>
+      <output class="rounds-value">{{ rounds }}</output>
+    </div>
+  </div>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">

@@ -3,11 +3,13 @@ import { PaddleDebtEntry, PaddlePlayer } from './paddle-player.model';
 
 const STORAGE_KEY = 'gameroster:paddle-players';
 const DEBTS_STORAGE_KEY = 'gameroster:paddle-debts';
-const WIN_VALUE = 2.5;
+const WIN_VALUE_STORAGE_KEY = 'gameroster:paddle-win-value';
+const DEFAULT_WIN_VALUE = 2.5;
 
 @Injectable({ providedIn: 'root' })
 export class PaddleService {
-  readonly winValue = WIN_VALUE;
+  readonly defaultWinValue = DEFAULT_WIN_VALUE;
+  readonly winValue = signal(this.loadWinValue());
   readonly players = signal<PaddlePlayer[]>(this.loadPlayers());
   readonly debtEntries = signal<PaddleDebtEntry[]>(this.loadDebtEntries());
 
@@ -37,7 +39,7 @@ export class PaddleService {
     this.updatePlayer(playerId, (player) => ({
       ...player,
       wins: player.wins + 1,
-      balance: player.balance + WIN_VALUE,
+      balance: player.balance + this.winValue(),
     }));
   }
 
@@ -45,14 +47,26 @@ export class PaddleService {
     this.updatePlayer(playerId, (player) => ({
       ...player,
       losses: player.losses + 1,
-      balance: player.balance - WIN_VALUE,
+      balance: player.balance - this.winValue(),
     }));
   }
 
-  addDebtEntry(winnerIds: string[], loserIds: string[]): void {
+  setWinValue(value: number): void {
+    if (!Number.isFinite(value) || value <= 0) return;
+
+    const normalizedValue = Math.round(value * 100) / 100;
+    this.winValue.set(normalizedValue);
+    try {
+      localStorage.setItem(WIN_VALUE_STORAGE_KEY, String(normalizedValue));
+    } catch {}
+  }
+
+  addDebtEntry(winnerIds: string[], loserIds: string[], rounds = 1): void {
     const uniqueWinnerIds = [...new Set(winnerIds)];
     const uniqueLoserIds = [...new Set(loserIds)];
     const participantIds = new Set([...uniqueWinnerIds, ...uniqueLoserIds]);
+    const normalizedRounds = Number.isInteger(rounds) && rounds > 0 ? rounds : 1;
+    const currentWinValue = this.winValue();
 
     if (
       uniqueWinnerIds.length === 0 ||
@@ -65,15 +79,15 @@ export class PaddleService {
 
     this.players.update((players) =>
       players.map((player) => {
-        const wins = uniqueWinnerIds.includes(player.id) ? 1 : 0;
-        const losses = uniqueLoserIds.includes(player.id) ? 1 : 0;
+        const wins = uniqueWinnerIds.includes(player.id) ? normalizedRounds : 0;
+        const losses = uniqueLoserIds.includes(player.id) ? normalizedRounds : 0;
 
         return wins || losses
           ? {
               ...player,
               wins: player.wins + wins,
               losses: player.losses + losses,
-              balance: player.balance + (wins - losses) * WIN_VALUE,
+              balance: player.balance + (wins - losses) * currentWinValue,
             }
           : player;
       }),
@@ -81,7 +95,13 @@ export class PaddleService {
 
     this.debtEntries.update((entries) => [
       ...entries,
-      { id: crypto.randomUUID(), winnerIds: uniqueWinnerIds, loserIds: uniqueLoserIds },
+      {
+        id: crypto.randomUUID(),
+        winnerIds: uniqueWinnerIds,
+        loserIds: uniqueLoserIds,
+        rounds: normalizedRounds,
+        winValue: currentWinValue,
+      },
     ]);
     this.persist();
     this.persistDebtEntries();
@@ -134,6 +154,18 @@ export class PaddleService {
       return Array.isArray(entries) ? entries : [];
     } catch {
       return [];
+    }
+  }
+
+  private loadWinValue(): number {
+    try {
+      const rawValue = localStorage.getItem(WIN_VALUE_STORAGE_KEY);
+      if (!rawValue) return DEFAULT_WIN_VALUE;
+
+      const value = Number(rawValue);
+      return Number.isFinite(value) && value > 0 ? value : DEFAULT_WIN_VALUE;
+    } catch {
+      return DEFAULT_WIN_VALUE;
     }
   }
 }
