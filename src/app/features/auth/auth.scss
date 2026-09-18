@@ -19,7 +19,6 @@
   padding: 4px;
   overflow: hidden;
 
-  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-pill);
   background: rgba(47, 47, 47, 0.72);
   backdrop-filter: blur(3px) saturate(180%);
@@ -34,7 +33,7 @@
   z-index: 0;
   width: calc((100% - 8px) / 2);
   border-radius: var(--radius-pill);
-  background: var(--color-primary);
+  background-color: var(--color-primary-light);
 
   content: '';
   pointer-events: none;
@@ -62,13 +61,13 @@
   color: rgba(255, 255, 255, 0.62);
   cursor: pointer;
   font: inherit;
-  font-weight: 700;
+  font-weight: 500;
   -webkit-tap-highlight-color: transparent;
 }
 
 .auth-switcher button.active {
   background: transparent;
-  color: var(--color-text);
+  color: black;
 }
 
 .auth-switcher button:focus {
