@@ -8,7 +8,7 @@
   <div class="player-card-list ui-surface">
     <mat-card *ngFor="let player of players$ | async; let rank = index; trackBy: trackById" class="ui-player-card">
       <div class="ui-player-info">
-        <div class="rank-badge ui-rank-badge">{{ rank + 1 }}</div>
+        <div class="ui-rank-badge">{{ rank + 1 }}</div>
         <div class="ui-player-name">{{ player.name }}</div>
       </div>
       <div class="ui-player-score">

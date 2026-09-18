@@ -259,6 +259,8 @@ mat-card.ui-player-card {
 }
 
 .ui-surface {
+  overflow: hidden;
+  border-radius: var(--radius-large);
   background-color: var(--color-surface);
   box-shadow: var(--shadow-surface);
   backdrop-filter: blur(16px) saturate(125%);
@@ -268,10 +270,6 @@ mat-card.ui-surface {
   --mat-card-container-color: var(--color-surface);
   --mat-card-container-shape: var(--radius-large);
   --mat-card-container-elevation: var(--shadow-surface);
-  overflow: hidden;
-  border-radius: var(--radius-large);
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-surface);
 }
 
 .ui-badge {

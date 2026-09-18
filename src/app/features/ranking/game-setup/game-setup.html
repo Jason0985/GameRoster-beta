@@ -1,7 +1,7 @@
 <div class="game-setup-root ui-page-root">
   <section class="ui-hero hero">
-    <h1 class="ui-title title">Brettspiel <span class="ui-accent">Ranking</span></h1>
-    <p class="ui-subtitle subtitle">
+    <h1 class="ui-title">Brettspiel <span class="ui-accent">Ranking</span></h1>
+    <p class="ui-subtitle">
       Punkte erfassen, automatisch zusammenrechnen und den Spielstand immer im Blick behalten
     </p>
   </section>
@@ -31,7 +31,7 @@
   <div class="player-card-list ui-surface">
     <mat-card *ngFor="let player of players$ | async; let rank = index; trackBy: trackById" class="ui-player-card">
       <div class="ui-player-info">
-        <span class="rank-badge ui-rank-badge">{{ rank + 1 }}</span>
+        <span class="ui-rank-badge">{{ rank + 1 }}</span>
         <div class="player-details">
           <div class="ui-player-name">{{ player.name }}</div>
         </div>

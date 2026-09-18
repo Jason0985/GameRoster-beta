@@ -1,23 +1,23 @@
-.apps-header,
-.apps-content {
+.collection-header,
+.collection-content {
   width: min(100%, var(--content-width));
   box-sizing: border-box;
 }
 
-.apps-header {
+.collection-header {
   margin-bottom: 24px;
   text-align: center;
 }
 
-.apps-heading {
+.collection-heading {
   width: 100%;
 }
 
-.apps-heading > div {
+.collection-heading > div {
   width: 100%;
 }
 
-.apps-search {
+.collection-search {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -28,7 +28,7 @@
   padding: 0 14px;
 }
 
-.apps-search input {
+.collection-search input {
   min-width: 0;
   flex: 1;
   border: 0;
@@ -39,10 +39,10 @@
   font-size: 14px;
 }
 
-.apps-search input::placeholder {
+.collection-search input::placeholder {
   color: var(--color-text-subtle);
 }
-.apps-search mat-icon {
+.collection-search mat-icon {
   color: var(--color-primary-light);
 }
 
