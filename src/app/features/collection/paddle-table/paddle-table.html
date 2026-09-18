@@ -122,27 +122,29 @@
     </section>
   }
 
-  <button
-    mat-flat-button
-    color="primary"
-    class="ui-button add-debt-button"
-    type="button"
-    (click)="openAddDebtDialog()"
-    [disabled]="sortedPlayers().length < 2"
-  >
-    <mat-icon aria-hidden="true">receipt_long</mat-icon>
-    Schulden eintragen
-  </button>
-  <button
-    mat-flat-button
-    color="primary"
-    class="ui-button add-player-button"
-    type="button"
-    (click)="openAddPlayerDialog()"
-  >
-    <mat-icon aria-hidden="true">person_add</mat-icon>
-    Spieler hinzufügen
-  </button>
+  <div class="primary-actions">
+    <button
+      mat-flat-button
+      color="primary"
+      class="ui-button add-player-button"
+      type="button"
+      (click)="openAddPlayerDialog()"
+    >
+      <mat-icon aria-hidden="true">person_add</mat-icon>
+      Spieler hinzufügen
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      class="ui-button add-debt-button"
+      type="button"
+      (click)="openAddDebtDialog()"
+      [disabled]="sortedPlayers().length < 2"
+    >
+      <mat-icon aria-hidden="true">receipt_long</mat-icon>
+      Schulden eintragen
+    </button>
+  </div>
   <button mat-flat-button color="warn" class="end-game-button" type="button" (click)="endGame()">
     <mat-icon aria-hidden="true">stop_circle</mat-icon>
     Spiel beenden

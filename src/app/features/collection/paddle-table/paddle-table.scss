@@ -259,7 +259,8 @@
 .end-game-button {
   align-self: center;
   min-height: 44px;
-  margin-top: 15px;
+  width: min(400px, 100%);
+  margin-top: 12px;
   padding: 0 22px;
   border-radius: var(--radius-pill);
   border: 0 !important;
@@ -269,16 +270,18 @@
   --mdc-filled-button-label-text-color: #ffffff;
 }
 
-.add-player-button {
-  align-self: center;
-  width: 400px;
-  box-sizing: border-box;
+.primary-actions {
+  display: grid;
+  width: min(100%, var(--content-width));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
   margin-top: 24px;
 }
 
+.add-player-button,
 .add-debt-button {
-  align-self: center;
-  width: 400px;
+  width: 100%;
   box-sizing: border-box;
-  margin-top: 24px;
+  min-height: 48px;
+  padding-inline: 20px;
 }
