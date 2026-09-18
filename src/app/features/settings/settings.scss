@@ -138,6 +138,16 @@
   background: var(--color-primary-light);
 }
 
+.setting-toggle--disabled {
+  background: var(--color-surface-muted);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.setting-toggle--disabled span {
+  background: var(--color-text-subtle);
+}
+
 .settings-about-line {
   min-height: 42px;
 }

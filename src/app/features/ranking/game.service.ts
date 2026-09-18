@@ -50,11 +50,15 @@ export class GameService {
   }
 
   private async loadFromDb(userId: string): Promise<void> {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from('ranking_games')
       .select('players, round_count, phase')
       .eq('user_id', userId)
       .maybeSingle();
+
+    if (error) {
+      console.error('Ranking-Spiel konnte nicht geladen werden.', error);
+    }
 
     this.playersSubject.next((data?.players as Player[]) ?? []);
     this.roundCountSubject.next(data?.round_count ?? 0);
@@ -86,14 +90,24 @@ export class GameService {
 
     if (this.saveTimer) clearTimeout(this.saveTimer);
     this.saveTimer = setTimeout(() => {
-      supabase.from('ranking_games').upsert({
-        user_id: user.id,
-        players,
-        round_count: this.roundCountSubject.value,
-        phase: this.phaseSubject.value,
-        updated_at: new Date().toISOString(),
-      });
+      void this.persistToDb(user.id);
     }, 400);
+  }
+
+  private async persistToDb(userId: string): Promise<void> {
+    if (this.session.user()?.id !== userId) return;
+
+    const { error } = await supabase.from('ranking_games').upsert({
+      user_id: userId,
+      players: this.playersSubject.value,
+      round_count: this.roundCountSubject.value,
+      phase: this.phaseSubject.value,
+      updated_at: new Date().toISOString(),
+    });
+
+    if (error) {
+      console.error('Ranking-Spiel konnte nicht gespeichert werden.', error);
+    }
   }
 
   getPlayers(): Player[] {
@@ -111,9 +125,7 @@ export class GameService {
   }
 
   removePlayer(id: string): void {
-    this.playersSubject.next(
-      this.playersSubject.value.filter((p) => p.id !== id)
-    );
+    this.playersSubject.next(this.playersSubject.value.filter((p) => p.id !== id));
     this.persist();
   }
 
@@ -131,7 +143,7 @@ export class GameService {
     const players = this.playersSubject.value.map((p) =>
       p.id in roundScores && Number.isFinite(roundScores[p.id])
         ? { ...p, score: p.score + (roundScores[p.id] ?? 0) }
-        : p
+        : p,
     );
     this.playersSubject.next(players);
     this.roundCountSubject.next(this.roundCountSubject.value + 1);
@@ -139,9 +151,7 @@ export class GameService {
   }
 
   resetScores(): void {
-    this.playersSubject.next(
-      this.playersSubject.value.map((p) => ({ ...p, score: 0 }))
-    );
+    this.playersSubject.next(this.playersSubject.value.map((p) => ({ ...p, score: 0 })));
     this.roundCountSubject.next(0);
     this.phaseSubject.next('setup');
     this.persist();

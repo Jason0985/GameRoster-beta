@@ -27,7 +27,7 @@ export class ProfileService {
     const { data, error } = await supabase
       .from('profiles')
       .select('*')
-      .ilike('username', `%${searchTerm}%`)
+      .or(`username.ilike.%${searchTerm}%,display_name.ilike.%${searchTerm}%`)
       .neq('id', currentUserId)
       .order('username')
       .limit(8);

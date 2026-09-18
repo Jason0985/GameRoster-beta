@@ -21,26 +21,24 @@ export class SessionService {
   readonly isLoggedIn = computed(() => this.currentUser() !== null);
 
   readonly displayName = computed(
-    () => this.currentProfile()?.display_name ?? this.currentProfile()?.username ?? ''
+    () => this.currentProfile()?.display_name ?? this.currentProfile()?.username ?? '',
   );
   readonly username = computed(() => this.currentProfile()?.username ?? '');
 
   constructor() {
-    supabase.auth.getSession().then(({ data }) => {
-        this.setUser(data.session?.user ?? null);
-        this.sessionInitialized.set(true); // erste Prüfung abgeschlossen
-      });
+    supabase.auth.getSession().then(async ({ data }) => {
+      await this.setUser(data.session?.user ?? null);
+      this.sessionInitialized.set(true); // erste Prüfung abgeschlossen
+    });
 
-      supabase.auth.onAuthStateChange((_event, session) => {
-        this.setUser(session?.user ?? null);
-      });
+    supabase.auth.onAuthStateChange((_event, session) => {
+      this.setUser(session?.user ?? null);
+    });
   }
 
   // User setzen und passendes Profil aus der Tabelle nachladen
   private async setUser(user: User | null): Promise<void> {
     this.currentUser.set(user);
-    this.currentProfile.set(
-      user ? await this.profileService.getProfile(user.id) : null
-    );
+    this.currentProfile.set(user ? await this.profileService.getProfile(user.id) : null);
   }
 }

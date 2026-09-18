@@ -243,9 +243,14 @@
 }
 
 .friend-results {
+  width: 100%;
+  box-sizing: border-box;
   height: 180px;
   overflow-y: auto;
-  padding-right: 2px;
+  padding: 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .friend-result-message {
@@ -264,7 +269,17 @@
   justify-content: space-between;
   min-height: 52px;
   gap: 12px;
+  padding: 6px 8px 6px 10px;
+  border-radius: var(--radius-small);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.friend-result:hover {
+  border-color: rgba(255, 154, 170, 0.22);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .friend-result:last-child {
@@ -295,8 +310,29 @@
 }
 
 .friend-result button {
-  flex: 0 0 auto;
+  display: grid;
+  flex: 0 0 44px;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent !important;
   color: var(--color-primary-light);
+  --mdc-icon-button-icon-size: 24px;
+  --mdc-icon-button-state-layer-size: 44px;
+}
+
+.friend-result button:hover:not(:disabled) {
+  background: transparent !important;
+  color: var(--color-primary);
+}
+
+.friend-result button:disabled {
+  color: var(--color-text-subtle);
+  opacity: 0.7;
 }
 
 .version-tag {

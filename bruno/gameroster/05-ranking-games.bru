@@ -1,0 +1,16 @@
+meta {
+  name: Ranking Games
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/rest/v1/ranking_games?select=*&user_id=eq.{{userId}}
+  body: none
+  auth: none
+}
+
+headers {
+  apikey: {{publishableKey}}
+  Authorization: Bearer {{accessToken}}
+}

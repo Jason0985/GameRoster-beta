@@ -3,7 +3,7 @@
     <a class="settings-back" routerLink="/" aria-label="Zur Startseite">
       <mat-icon aria-hidden="true">chevron_left</mat-icon>
     </a>
-    <p class="settings-kicker">GameRoster</p>
+    <p class="settings-kicker">Game Center Beta</p>
     <h1 class="ui-title">Einstellungen</h1>
     <p class="ui-subtitle">Passe dein Spielerlebnis an.</p>
   </header>
@@ -39,14 +39,18 @@
         <strong>Standard-Einsatz</strong>
         <span>Voreinstellung für neue Paddle-Spiele</span>
       </div>
-      <span class="setting-value">1,00 €</span>
+      <span class="setting-value">-</span>
     </div>
     <div class="setting-row">
       <div class="setting-copy">
         <strong>Spielstände behalten</strong>
         <span>Ergebnisse auf diesem Gerät speichern</span>
       </div>
-      <span class="setting-toggle is-on" aria-label="Aktiv">
+      <span
+        class="setting-toggle setting-toggle--disabled"
+        aria-disabled="true"
+        aria-label="Nicht verfügbar"
+      >
         <span></span>
       </span>
     </div>
@@ -62,16 +66,24 @@
         <strong>Spiel-Einladungen</strong>
         <span>Wenn Freunde dich zu einer Runde einladen</span>
       </div>
-      <span class="setting-toggle is-on" aria-label="Aktiv">
+      <span
+        class="setting-toggle setting-toggle--disabled"
+        aria-disabled="true"
+        aria-label="Nicht verfügbar"
+      >
         <span></span>
       </span>
     </div>
     <div class="setting-row">
       <div class="setting-copy">
         <strong>Neuigkeiten</strong>
-        <span>Gelegentliche Updates zu GameRoster</span>
+        <span>Gelegentliche Updates zu Game Center</span>
       </div>
-      <span class="setting-toggle" aria-label="Inaktiv">
+      <span
+        class="setting-toggle setting-toggle--disabled"
+        aria-disabled="true"
+        aria-label="Nicht verfügbar"
+      >
         <span></span>
       </span>
     </div>
@@ -87,10 +99,10 @@
       <strong>3.0</strong>
     </div>
     <div class="settings-about-line">
-      <span>GameRoster</span>
+      <span>Game Center Beta</span>
       <span class="settings-status"><span></span> Bereit</span>
     </div>
   </section>
 
-  <footer class="settings-footer">&#169; 2026 GameRoster</footer>
+  <footer class="settings-footer">&#169; 2026 Game Center Beta</footer>
 </div>
