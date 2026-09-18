@@ -12,9 +12,9 @@
   "apple-mobile-web-app-status-bar-style": "default",
   "icons": [
     {
-      "src": "assets/icons/app-beta-icon.jpg",
-      "sizes": "2048x2048",
-      "type": "image/jpeg",
+      "src": "game-center-logo-background.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
       "purpose": "any"
     }
   ]
