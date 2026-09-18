@@ -1,16 +1,26 @@
 <div class="app-shell">
   <header class="top-bar">
     <span class="top-bar-title">
-      <img src="gameRooster-icon.png" alt="" aria-hidden="true">
-      GameRoster
+      <img src="gameRooster-icon.png" alt="" aria-hidden="true" />
+      Game Center Beta
     </span>
 
     <div class="header-actions">
-      <button mat-icon-button class="header-icon-button notification-button" aria-label="Benachrichtigungen">
+      <button
+        mat-icon-button
+        class="header-icon-button notification-button"
+        routerLink="/notifications"
+        aria-label="Benachrichtigungen"
+      >
         <mat-icon aria-hidden="true">notifications</mat-icon>
         <span class="notification-dot"></span>
       </button>
-      <button mat-icon-button class="header-icon-button" aria-label="Einstellungen">
+      <button
+        mat-icon-button
+        class="header-icon-button"
+        routerLink="/settings"
+        aria-label="Einstellungen"
+      >
         <mat-icon aria-hidden="true">settings</mat-icon>
       </button>
     </div>
@@ -21,8 +31,13 @@
   </main>
 
   <nav class="bottom-nav" aria-label="Hauptnavigation">
-    <a class="bottom-nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-      aria-label="Home">
+    <a
+      class="bottom-nav-link"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      aria-label="Home"
+    >
       <mat-icon aria-hidden="true">home</mat-icon>
       <span>Home</span>
     </a>
@@ -30,9 +45,14 @@
       <mat-icon aria-hidden="true">leaderboard</mat-icon>
       <span>Ranking</span>
     </a>
-    <a class="bottom-nav-link" routerLink="/apps" routerLinkActive="active" aria-label="Apps">
+    <a
+      class="bottom-nav-link"
+      routerLink="/collection"
+      routerLinkActive="active"
+      aria-label="Sammlung"
+    >
       <mat-icon aria-hidden="true">apps</mat-icon>
-      <span>Apps</span>
+      <span>Sammlung</span>
     </a>
     <a class="bottom-nav-link" routerLink="/profile" routerLinkActive="active" aria-label="Profil">
       <mat-icon aria-hidden="true">person</mat-icon>

@@ -4,7 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { GameService } from '../../../game.service';
+import { GameService } from '../game.service';
 import { Player } from '../../../player.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

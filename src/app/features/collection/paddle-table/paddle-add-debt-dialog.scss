@@ -1,0 +1,230 @@
+:host {
+  display: block;
+  min-width: min(100%, 520px);
+}
+
+.dialog-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.dialog-title-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-light);
+}
+
+.dialog-title-icon mat-icon {
+  width: 22px;
+  height: 22px;
+  font-size: 22px;
+}
+
+.dialog-kicker,
+.dialog-title-text,
+.team-label,
+.team-count,
+.rounds-label,
+.rounds-hint {
+  display: block;
+}
+
+.dialog-kicker {
+  margin-bottom: 2px;
+  color: var(--color-primary-light);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dialog-title-text {
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.dialog-intro {
+  margin: 0 0 20px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.team-card {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-medium);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.team-card--winners {
+  border-color: rgba(159, 240, 187, 0.28);
+}
+
+.team-card--losers {
+  border-color: rgba(255, 138, 128, 0.28);
+}
+
+.team-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 12px;
+}
+
+.team-indicator {
+  display: grid;
+  place-items: center;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.team-indicator mat-icon {
+  width: 17px;
+  height: 17px;
+  font-size: 17px;
+}
+
+.team-card--winners .team-indicator,
+.team-card--winners .team-label {
+  color: #9ff0bb;
+}
+
+.team-card--losers .team-indicator,
+.team-card--losers .team-label {
+  color: var(--color-danger-light);
+}
+
+.team-label {
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.team-count {
+  margin-top: 2px;
+  color: var(--color-text-subtle);
+  font-size: 11px;
+}
+
+.team-field {
+  width: 100%;
+}
+
+.selected-names {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-card--winners .team-field {
+  --mdc-outlined-text-field-focus-outline-color: #9ff0bb;
+}
+
+.team-card--losers .team-field {
+  --mdc-outlined-text-field-focus-outline-color: var(--color-danger-light);
+}
+
+.rounds-control {
+  margin-top: 22px;
+  padding: 12px 14px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-medium);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.rounds-label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.rounds-hint {
+  margin-top: 2px;
+  color: var(--color-text-subtle);
+  font-size: 11px;
+}
+
+.rounds-slider-line {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 3px;
+}
+
+.rounds-slider-line > mat-icon {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  color: var(--color-primary-light);
+  font-size: 18px;
+}
+
+.rounds-slider-line mat-slider {
+  flex: 1;
+  min-width: 0;
+}
+
+.rounds-value {
+  display: grid;
+  place-items: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 34px;
+  border-radius: var(--radius-small);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-light);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.versus {
+  align-self: center;
+  padding: 7px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text-subtle);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+[mat-dialog-actions] {
+  gap: 10px;
+  padding-top: 8px;
+}
+
+@media (max-width: 520px) {
+  :host {
+    min-width: 0;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .versus {
+    justify-self: center;
+    margin: -3px 0;
+  }
+
+  .rounds-slider-line {
+    gap: 6px;
+  }
+}

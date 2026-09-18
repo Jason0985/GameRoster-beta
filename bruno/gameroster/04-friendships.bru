@@ -1,0 +1,16 @@
+meta {
+  name: Friendships
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/rest/v1/friendships?select=*&or=(requester_id.eq.{{userId}},addressee_id.eq.{{userId}})
+  body: none
+  auth: none
+}
+
+headers {
+  apikey: {{publishableKey}}
+  Authorization: Bearer {{accessToken}}
+}

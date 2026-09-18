@@ -1,0 +1,152 @@
+<div class="paddle-root ui-page-root">
+  <header class="ui-hero paddle-header">
+    <a
+      class="collection-back-button"
+      routerLink="/collection"
+      matTooltip="Zur Sammlung"
+      aria-label="Zur Sammlung zurück"
+    >
+      <mat-icon aria-hidden="true">chevron_left</mat-icon>
+    </a>
+    <div class="paddle-heading-icon" aria-hidden="true">
+      <mat-icon>sports_tennis</mat-icon>
+    </div>
+    <h1 class="ui-title">Paddle <span class="ui-accent">Rangliste</span></h1>
+  </header>
+
+  @if (sortedPlayers().length) {
+    <section class="ranking-section" aria-labelledby="ranking-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Aktueller Stand</p>
+          <h2 id="ranking-title">Ranking</h2>
+        </div>
+        <div class="section-actions">
+          <mat-icon aria-hidden="true">leaderboard</mat-icon>
+          <button
+            mat-icon-button
+            type="button"
+            [matMenuTriggerFor]="playerActionsMenu"
+            aria-label="Kartenaktionen öffnen"
+            matTooltip="Kartenaktionen"
+          >
+            <mat-icon aria-hidden="true">more_vert</mat-icon>
+          </button>
+        </div>
+        <mat-menu #playerActionsMenu="matMenu">
+          <button mat-menu-item type="button" (click)="expandAllPlayers()">
+            <mat-icon aria-hidden="true">unfold_more</mat-icon>
+            <span>Alle Karten öffnen</span>
+          </button>
+          <button mat-menu-item type="button" (click)="collapseAllPlayers()">
+            <mat-icon aria-hidden="true">unfold_less</mat-icon>
+            <span>Alle Karten schließen</span>
+          </button>
+          <button mat-menu-item type="button" (click)="openSetValueDialog()">
+            <mat-icon aria-hidden="true">euro</mat-icon>
+            <span>Einsatz ändern</span>
+          </button>
+        </mat-menu>
+      </div>
+
+      <div class="player-card-list ui-surface">
+        @for (detail of playerDebtDetails(); track detail.player.id; let rank = $index) {
+          <article
+            class="paddle-player-card"
+            [class.paddle-player-card--expanded]="isPlayerExpanded(detail.player.id)"
+          >
+            <button
+              class="player-summary"
+              type="button"
+              (click)="togglePlayer(detail.player.id)"
+              [attr.aria-expanded]="isPlayerExpanded(detail.player.id)"
+              [attr.aria-controls]="'debt-details-' + detail.player.id"
+            >
+              <span class="ui-rank-badge">{{ rank + 1 }}</span>
+              <span class="player-details">
+                <span class="ui-player-name">{{ detail.player.name }}</span>
+                <span class="player-record">
+                  {{ detail.player.wins }} Siege · {{ detail.player.losses }} Niederlagen
+                </span>
+              </span>
+              <span
+                class="player-result"
+                [class.player-result--negative]="detail.player.balance < 0"
+              >
+                {{ formatBalance(detail.player.balance) }}
+              </span>
+              <mat-icon class="player-chevron" aria-hidden="true">chevron_right</mat-icon>
+            </button>
+
+            @if (isPlayerExpanded(detail.player.id)) {
+              <div class="debt-details" [id]="'debt-details-' + detail.player.id">
+                @if (detail.owedTo.length) {
+                  <div class="debt-group">
+                    <p class="debt-group-title">Schuldet</p>
+                    @for (debt of detail.owedTo; track debt.player.id) {
+                      <div class="debt-row">
+                        <span>{{ debt.player.name }}</span>
+                        <strong>{{ formatBalance(debt.amount) }}</strong>
+                      </div>
+                    }
+                  </div>
+                }
+                @if (detail.owedBy.length) {
+                  <div class="debt-group debt-group--receive">
+                    <p class="debt-group-title">Bekommt von</p>
+                    @for (debt of detail.owedBy; track debt.player.id) {
+                      <div class="debt-row">
+                        <span>{{ debt.player.name }}</span>
+                        <strong>{{ formatBalance(debt.amount) }}</strong>
+                      </div>
+                    }
+                  </div>
+                }
+                @if (!detail.owedTo.length && !detail.owedBy.length) {
+                  <p class="no-debts">Noch keine offenen Schulden.</p>
+                }
+                <div class="debt-total">
+                  <span>Insgesamt zu zahlen</span>
+                  <strong>{{ formatBalance(detail.totalToPay) }}</strong>
+                </div>
+              </div>
+            }
+          </article>
+        }
+      </div>
+    </section>
+  } @else {
+    <section class="empty-state ui-surface">
+      <mat-icon aria-hidden="true">groups</mat-icon>
+      <p>Füge Spieler hinzu, um die Rangliste zu starten.</p>
+    </section>
+  }
+
+  <div class="primary-actions">
+    <button
+      mat-flat-button
+      color="primary"
+      class="ui-button add-player-button"
+      type="button"
+      (click)="openAddPlayerDialog()"
+    >
+      <mat-icon aria-hidden="true">person_add</mat-icon>
+      Spieler hinzufügen
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      class="ui-button add-debt-button"
+      type="button"
+      (click)="openAddDebtDialog()"
+      [disabled]="sortedPlayers().length < 2"
+    >
+      <mat-icon aria-hidden="true">receipt_long</mat-icon>
+      Schulden eintragen
+    </button>
+  </div>
+  <button mat-flat-button color="warn" class="end-game-button" type="button" (click)="endGame()">
+    <mat-icon aria-hidden="true">stop_circle</mat-icon>
+    Spiel beenden
+  </button>
+</div>

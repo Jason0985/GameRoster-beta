@@ -1,0 +1,16 @@
+meta {
+  name: Profiles
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/rest/v1/profiles?select=*&limit=50
+  body: none
+  auth: none
+}
+
+headers {
+  apikey: {{publishableKey}}
+  Authorization: Bearer {{accessToken}}
+}

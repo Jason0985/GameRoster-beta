@@ -1,0 +1,109 @@
+<div class="notifications-root ui-page-root ui-page-root--spacious">
+  <header class="ui-hero notifications-header">
+    <a class="notifications-back" routerLink="/" aria-label="Zur Startseite">
+      <mat-icon aria-hidden="true">chevron_left</mat-icon>
+    </a>
+    <p class="notifications-kicker">Game Center Beta</p>
+    <h1 class="ui-title">Benachrichtigungen</h1>
+    <p class="ui-subtitle">Einladungen, Anfragen und Neuigkeiten an einem Ort.</p>
+  </header>
+
+  @if (!session.isLoggedIn()) {
+    <section class="notifications-empty ui-surface">
+      <mat-icon aria-hidden="true">lock</mat-icon>
+      <h2>Anmelden erforderlich</h2>
+      <p>Melde dich an, um deine Benachrichtigungen zu sehen.</p>
+      <a mat-flat-button color="primary" routerLink="/profile/auth">Anmelden</a>
+    </section>
+  } @else if (loading()) {
+    <section class="notifications-empty ui-surface">
+      <mat-icon aria-hidden="true">hourglass_empty</mat-icon>
+      <p>Benachrichtigungen werden geladen ...</p>
+    </section>
+  } @else if (!notifications().length) {
+    <section class="notifications-empty ui-surface">
+      <mat-icon aria-hidden="true">notifications_none</mat-icon>
+      <h2>Alles ruhig</h2>
+      <p>Du hast im Moment keine neuen Benachrichtigungen.</p>
+    </section>
+  } @else {
+    <section class="notification-list" aria-label="Deine Benachrichtigungen">
+      @for (notification of notifications(); track notification.id) {
+        <div
+          class="notification-swipe-shell"
+          [class.notification-swipe-shell--ready]="isSwipeReady(notification.id)"
+        >
+          <div class="swipe-delete-action swipe-delete-action--left" aria-hidden="true">
+            <mat-icon>delete</mat-icon>
+            <span>Löschen</span>
+          </div>
+          <div class="swipe-delete-action swipe-delete-action--right" aria-hidden="true">
+            <mat-icon>delete</mat-icon>
+            <span>Löschen</span>
+          </div>
+          <span class="swipe-threshold swipe-threshold--left" aria-hidden="true"></span>
+          <span class="swipe-threshold swipe-threshold--right" aria-hidden="true"></span>
+          <article
+            class="notification-card ui-surface"
+            [class.notification-card--dragging]="!isSwipeRemoving(notification.id)"
+            [class.notification-card--removing]="isSwipeRemoving(notification.id)"
+            [style.transform]="'translateX(' + getSwipeOffset(notification.id) + 'px)'"
+            (touchstart)="startSwipe($event, notification.id)"
+            (touchmove)="moveSwipe($event, notification.id)"
+            (touchend)="finishSwipe($event, notification.id)"
+          >
+            <div class="notification-card-topline">
+              <span
+                class="notification-type-icon"
+                [class.notification-type-icon--game]="notification.type === 'game_invite'"
+                aria-hidden="true"
+              >
+                <mat-icon>{{
+                  notification.type === 'game_invite' ? 'sports_tennis' : 'person_add'
+                }}</mat-icon>
+              </span>
+              <div class="notification-copy">
+                <div class="notification-title-line">
+                  <h2>{{ notification.title }}</h2>
+                  <span>{{ formatTime(notification.created_at) }}</span>
+                </div>
+                <p>{{ notification.message }}</p>
+              </div>
+              <button
+                mat-icon-button
+                type="button"
+                aria-label="Benachrichtigung entfernen"
+                matTooltip="Entfernen"
+                (click)="removeNotification(notification.id)"
+              >
+                <mat-icon aria-hidden="true">close</mat-icon>
+              </button>
+            </div>
+
+            <div class="notification-actions">
+              <button
+                mat-stroked-button
+                type="button"
+                (click)="handleNotification(notification.id, 'rejected')"
+              >
+                Ablehnen
+              </button>
+              <button
+                mat-flat-button
+                color="primary"
+                type="button"
+                (click)="handleNotification(notification.id, 'accepted')"
+              >
+                {{ notification.type === 'game_invite' ? 'Teilnehmen' : 'Annehmen' }}
+              </button>
+            </div>
+          </article>
+        </div>
+      }
+    </section>
+  }
+
+  <p class="notifications-hint">
+    Wische eine Nachricht nach links oder rechts, um sie auszublenden.
+  </p>
+</div>

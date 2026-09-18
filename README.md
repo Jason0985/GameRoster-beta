@@ -1,7 +1,7 @@
-# Board Game Scoreboard
+# Game Center Beta
 
-Eine Angular-App zum Verwalten von Spielern, Rundenpunkten und dem finalen Ranking.
-Das Angular-Projekt liegt direkt im Repository-Root.
+Game Center Beta ist eine Angular-PWA zum Verwalten von Spielern, Rankings und
+verschiedenen Brettspielen. Das Angular-Projekt liegt direkt im Repository-Root.
 
 ## Entwicklung
 
@@ -12,25 +12,22 @@ npm start
 
 Die App ist danach unter `http://localhost:4200/` erreichbar.
 
-## Build und Tests
+Für die lokale Supabase-Konfiguration wird die von Git ignorierte Datei
+`src/environments/environment.ts` benötigt. Als Vorlage dient
+`src/environments/environment.example.ts`. Der verwendete Key muss ein
+Supabase-Publishable-Key sein, niemals ein `service_role`-Key.
+
+## Build, Tests und Deployment
 
 ```bash
 npm run build
 npm test
-```
-
-Der Produktionsbuild wird unter `dist/` erzeugt.
-
-## GitHub Pages
-
-Das Repository verwendet den Namen `boardGameRaking`. Der Pages-Build setzt deshalb
-automatisch den Unterpfad `/boardGameRaking/`:
-
-```bash
 npm run deploy
 ```
 
-Das Deploy-Script veröffentlicht `dist/frontend/browser` auf dem Branch `gh-pages`.
+Der Produktionsbuild wird unter `dist/frontend` erzeugt. `npm run deploy` baut
+die App mit dem GitHub-Pages-Unterpfad `/game-center-beta/` und veröffentlicht
+`dist/frontend/browser` auf dem Branch `gh-pages`.
 
 In GitHub unter **Settings > Pages** auswählen:
 
@@ -38,122 +35,57 @@ In GitHub unter **Settings > Pages** auswählen:
 - **Branch:** `gh-pages`
 - **Folder:** `/ (root)`
 
-## Geplante Architektur
+Bei einem anderen Repository-Namen müssen `base-href` und `deploy-url` im Script
+`build:pages` angepasst werden.
 
-Die Anwendung bleibt eine Angular-PWA und kann weiterhin über GitHub Pages
-veröffentlicht und auf dem Handy installiert werden.
+## Aktueller Funktionsumfang
 
-### Zuständigkeiten der Speicher
+### Funktioniert
 
-- `localStorage`: kleine lokale Einstellungen wie Theme oder zuletzt geöffnete Ansicht
-- IndexedDB: Offline-Daten, lokale Entwürfe und noch nicht synchronisierte Ergebnisse
-- Supabase/PostgreSQL: Profile, Seasons, Mitglieder, Spiele und Rankings
-- Service Worker: Caching der App-Dateien, aber keine zentrale Datenbank
+- Registrierung und Anmeldung über Supabase Auth
+- Profile mit Benutzername und Anzeigename
+- Suche nach anderen Profilen über Benutzername oder Anzeigename
+- Ranking-Spiele werden für angemeldete Nutzer in `ranking_games` gespeichert
+- Paddle-Table-Spiel mit lokaler Spielerliste und Schuldenverwaltung
+- Angular-PWA mit Service Worker und GitHub-Pages-Deployment
 
-Die aktuelle Spielerliste wird noch unter dem lokalen Schlüssel
-`boardgame:players` gespeichert. Das ist für den Prototypen ausreichend, aber die
-Daten werden nicht zwischen Geräten synchronisiert.
+### Noch nicht fertig
 
-### Zielarchitektur
+Paddle-Table-Daten liegen noch im `localStorage` und werden nicht zwischen
+Geräten synchronisiert. Beim Löschen der Browserdaten können sie verloren gehen.
 
-```text
-Angular-PWA auf GitHub Pages
-        |
-        | HTTPS und Authentifizierung
-        v
-Supabase Auth und PostgreSQL
-        |
-        v
-Profile, Seasons, Spiele und Rankings
-```
+- Freundschaftsanfragen können gesucht, aber noch nicht erfolgreich hinzugefügt
+  bzw. vollständig verarbeitet werden.
+- Benachrichtigungen, Home-Statistiken, Einstellungen und einige Profilbereiche
+  verwenden noch Mock-Daten oder sind nur teilweise funktionsfähig.
+- Es gibt noch keinen vollständigen Offline-Modus mit IndexedDB und
+  Synchronisationswarteschlange.
+- Direkte Aufrufe verschachtelter Angular-Routen müssen auf GitHub Pages noch
+  getestet werden, da ein Browser-Refresh sonst zu einem 404 führen kann.
 
-Für den Offline-Modus werden lokale Änderungen zunächst in IndexedDB gespeichert.
-Sobald wieder eine Internetverbindung besteht, werden sie mit dem Backend
-synchronisiert.
+## Supabase-Datenbank
 
-## Meilensteine
+Die versionierten Migrationen liegen in `supabase/migrations/`:
 
-### Meilenstein 1: Datenmodell und aktueller Prototyp
+- `20260918220000_core_schema.sql`: Profile, Ranking-Spiele, Freundschaften,
+  RLS-Policies und automatisches Erstellen eines Profils bei Registrierung
+- `20260918221000_notifications.sql`: Benachrichtigungen und RLS-Policies
 
-- Lokale Spiellogik stabilisieren
-- Datenmodell für mehrere Spiele und Seasons festlegen
-- Lokale Datenzugriffe aus der UI kapseln
+Die Migrationen wurden als Grundlage für ein getrenntes Staging- und
+Produktionsprojekt erstellt. Für Live sollte Entwicklung nicht dauerhaft gegen
+dieselbe Datenbank wie die produktive Seite testen.
 
-**Aufwand:** ungefähr 0,5 bis 1 Tag
+## Vor dem Livegang
 
-### Meilenstein 2: Supabase und Authentifizierung
-
-- Supabase-Projekt anlegen
-- Registrierung und Login ergänzen
-- Profile mit Benutzern verbinden
-- Entwicklungs- und Produktionsumgebung trennen
-- Row Level Security für alle Tabellen aktivieren
-
-**Aufwand:** ungefähr 1 bis 2 Tage
-
-### Meilenstein 3: Seasons und Spieler
-
-- Seasons erstellen, umbenennen und archivieren
-- Spieler einer Season hinzufügen oder entfernen
-- Seasons aus dem Backend laden
-- Lokale Spielerliste durch Backend-Daten ersetzen
-
-**Aufwand:** ungefähr 1 bis 2 Tage
-
-### Meilenstein 4: Spiele und Rankings
-
-- Abgeschlossene Spiele dauerhaft speichern
-- Runden und Punktestände speichern
-- Ranking aus den Ergebnissen berechnen
-- Bereits gespeicherte Spiele korrigieren können
-
-Das Ranking sollte aus den gespeicherten Ergebnissen berechnet werden und nicht
-die einzige gespeicherte Datenquelle sein.
-
-**Aufwand:** ungefähr 2 bis 4 Tage
-
-### Meilenstein 5: Beitreten per Link oder QR-Code
-
-- Season-Einladung erzeugen
-- Einladung als Link teilen
-- QR-Code aus dem Einladungslink erzeugen
-- Einladung annehmen und Season beitreten
-- Einladungen widerrufen oder zeitlich begrenzen
-
-Der QR-Code enthält nur einen zufälligen Einladungscode oder Einladungslink.
-Die Berechtigungen werden immer im Backend geprüft.
-
-**Aufwand:** ungefähr 1 bis 2 Tage
-
-### Meilenstein 6: Offline-Modus mit IndexedDB
-
-- Relevante Daten lokal zwischenspeichern
-- Neue Ergebnisse offline erfassen
-- Offene Änderungen in einer Synchronisationswarteschlange speichern
-- Bei bestehender Verbindung automatisch synchronisieren
-- Synchronisationsfehler anzeigen
-
-**Aufwand:** ungefähr 2 bis 4 Tage
-
-### Meilenstein 7: Weitere Brettspiele
-
-- Spiele nicht fest in einzelne Komponenten einbauen
-- Spielregeln und Wertungsarten als Konfiguration oder Module modellieren
-- Unterschiedliche Spieleranzahlen und Punktearten unterstützen
-- Seasons unabhängig vom konkreten Spiel verwalten
-
-**Aufwand:** ungefähr 2 bis 5 Tage
-
-## Sicherheitsgrundlagen
-
-- Ausschließlich HTTPS verwenden
-- Keine Passwörter oder privaten Daten in localStorage speichern
-- Backend-Zugriffe authentifizieren
-- Row Level Security für Seasons, Mitglieder und Spiele verwenden
-- Einladungscodes zufällig und ausreichend lang erzeugen
-- Einladungscodes mit Ablaufzeit und Widerruf versehen
-- Datenbank-Backups und Löschmöglichkeiten einplanen
-- Keine vertraulichen API-Schlüssel im Repository oder Frontend speichern
+- Staging- und Produktions-Supabase-Projekt trennen
+- Migrationen im Produktionsprojekt ausführen und RLS prüfen
+- Supabase Site URL und Redirect URLs für GitHub Pages konfigurieren
+- Environment-Konfiguration im Build-System bereitstellen, da
+  `environment.ts` nicht versioniert wird
+- Freundschaftsanfragen und Mock-Daten durch echte Backend-Funktionen ersetzen
+- Tests reparieren und den Produktionsbuild ohne kritische Warnungen prüfen
+- Datenbank-Backups und eine Möglichkeit zur Kontolöschung einrichten
 
 Die GitHub-Pages-URL ist kein Zugriffsschutz. Alles, was im Browser ausgeführt
-wird, kann von Benutzern eingesehen werden.
+wird, kann von Benutzern eingesehen werden. RLS und Authentifizierung müssen
+deshalb im Backend durchgesetzt werden.

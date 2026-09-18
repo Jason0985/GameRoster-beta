@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { GameService } from '../../../game.service';
+import { GameService } from '../game.service';
 import { Player } from '../../../player.model';
 
 @Component({
@@ -50,6 +50,7 @@ export class GameSetup {
   }
 
   startGame() {
+    this.game.startGame();
     this.router.navigate(['/ranking/game']);
   }
 

@@ -1,21 +1,20 @@
-<div class="scoreboard-root">
+<div class="scoreboard-root ui-page-root">
   <section class="ui-hero hero">
-    <h1 class="ui-title title">Brettspiel <span class="ui-accent">Ranking</span></h1>
-    <div class="ui-badge">
-      Runde {{ ((roundCount$ | async) ?? 0) + 1 }}
-    </div>
+    <h1 class="ui-title">Brettspiel <span class="ui-accent">Ranking</span></h1>
+    <div class="ui-badge">Runde {{ ((roundCount$ | async) ?? 0) + 1 }}</div>
   </section>
 
-  <div class="list">
-    <mat-card *ngFor="let p of players$ | async; let rank = index; trackBy: trackById" class="player-card ui-surface">
+  <div class="player-card-list ui-surface">
+    <mat-card *ngFor="let p of players$ | async; let rank = index; trackBy: trackById" class="ui-player-card">
       <div class="mat-card-wrapper">
-        <div class="info">
+        <div class="ui-player-info info">
           <div class="player-heading">
-            <span class="rank-badge">{{ rank + 1 }}</span>
-            <div class="name">{{ p.name }}</div>
+            <span class="ui-rank-badge ui-rank-badge--small">{{ rank + 1 }}</span>
+            <div class="ui-player-name">{{ p.name }}</div>
           </div>
-          <div class="score">
-            <span>{{ p.score }}</span> points
+          <div class="ui-player-score">
+            <span class="score-value">{{ p.score }}</span>
+            <span class="score-unit">Pkt.</span>
           </div>
         </div>
         <mat-form-field appearance="outline" class="score-field" subscriptSizing="dynamic">

@@ -1,0 +1,71 @@
+:host {
+  display: block;
+  min-width: min(100%, 450px);
+}
+
+.value-dialog-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.value-dialog-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-light);
+}
+
+.value-dialog-icon mat-icon {
+  width: 21px;
+  height: 21px;
+  font-size: 21px;
+}
+
+.value-dialog-kicker,
+.value-dialog-heading {
+  display: block;
+}
+
+.value-dialog-kicker {
+  margin-bottom: 2px;
+  color: var(--color-primary-light);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.value-dialog-heading {
+  font-size: 21px;
+  line-height: 1.1;
+}
+
+mat-dialog-content {
+  max-height: none;
+  overflow: visible;
+}
+
+.value-dialog-intro {
+  margin: 0 0 18px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.value-field {
+  width: 100%;
+}
+
+[mat-dialog-actions] {
+  gap: 10px;
+  padding-top: 8px;
+}
+
+@media (max-width: 420px) {
+  :host {
+    min-width: 0;
+  }
+}

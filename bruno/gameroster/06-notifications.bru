@@ -1,0 +1,16 @@
+meta {
+  name: Notifications
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/rest/v1/notifications?select=*&recipient_id=eq.{{userId}}&order=created_at.desc&limit=50
+  body: none
+  auth: none
+}
+
+headers {
+  apikey: {{publishableKey}}
+  Authorization: Bearer {{accessToken}}
+}

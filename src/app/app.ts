@@ -5,6 +5,7 @@ import {
   RouterLinkActive,
   RouterOutlet,
 } from '@angular/router';
+import { SupabaseService } from './supabase.service';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +13,6 @@ import {
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {}
+export class App {
+  // constructor(private supabaseService: SupabaseService) {}
+}
