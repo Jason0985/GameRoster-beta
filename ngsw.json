@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1789770251367,
+  "timestamp": 1789770362479,
   "index": "/game-center-beta/index.html",
   "assetGroups": [
     {
@@ -52,6 +52,7 @@
         "/game-center-beta/assets/icons/app_icon.jpg",
         "/game-center-beta/assets/icons/gameRooster-icon.png",
         "/game-center-beta/game-center-logo-background.png",
+        "/game-center-beta/game-center-logo-beta.png",
         "/game-center-beta/game-center-logo.png"
       ],
       "patterns": []
@@ -85,10 +86,11 @@
     "/game-center-beta/chunk-smvSPcho.js": "f24948dc31d9f2f30b6e8166b1044df6848938ce",
     "/game-center-beta/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
     "/game-center-beta/game-center-logo-background.png": "06165230483d248ad416ea08b764ada7f9f85be4",
+    "/game-center-beta/game-center-logo-beta.png": "aac558bd0cdea222f3df52cc9bfbd2d991a93a8e",
     "/game-center-beta/game-center-logo.png": "453eb4b561e2e9c17a0dccb721a870aab4785cb3",
     "/game-center-beta/index.html": "7e0703cf1f56d8c96ecb04a7085702d4c96e9673",
     "/game-center-beta/main-BXH3AHQE.js": "94b6753f99dcea8bb7ef0a62bf4ea0fd0e2ef478",
-    "/game-center-beta/manifest.webmanifest": "699d79ee1e12872b541428c8c4ef1b85c3687562",
+    "/game-center-beta/manifest.webmanifest": "9fad54bf03c9d9dc2202577412b67e9911febafd",
     "/game-center-beta/styles-SIXBYKJE.css": "933cd6d6176574022ac6b966620c640d05707a86"
   },
   "navigationUrls": [
